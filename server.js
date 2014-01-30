@@ -81,9 +81,7 @@ console.log('Express app started on port ' + port);
 // Initializing logger
 logger.init(app, passport, mongoose);
 
-// Expose app
-exports = module.exports = app;
-
+/*ignore jslint start*/
 app.get('/quote', function(req, res){
     request('http://clearquot.es', function (error, response, body) {
         if (!error && response.statusCode === 200) {
@@ -92,3 +90,7 @@ app.get('/quote', function(req, res){
         }
     });
 });
+/*ignore jslint end*/
+
+// Expose app
+exports = module.exports = app;

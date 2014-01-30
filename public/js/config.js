@@ -4,16 +4,16 @@
 angular.module('mean').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-        when('/articles', {
+        when('/browse', {
             templateUrl: 'views/articles/list.html'
         }).
-        when('/articles/create', {
+        when('/submit', {
             templateUrl: 'views/articles/create.html'
         }).
-        when('/articles/:articleId/edit', {
+        when('/art/:articleId/edit', {
             templateUrl: 'views/articles/edit.html'
         }).
-        when('/articles/:articleId', {
+        when('/art/:articleId', {
             templateUrl: 'views/articles/view.html'
         }).
         when('/about', {
