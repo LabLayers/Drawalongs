@@ -1,0 +1,28 @@
+doctype html
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include ../includes/head
+  body
+    span#top
+    nav(data-ng-include="'views/header.html'", data-role="navigation")
+      menu
+        li.logo
+          a Drawalongs
+        li
+          a Loading...
+        // li
+          a Trains
+            span 8
+        // li
+          a Contests
+        // li
+          a Gallery
+        if loggedIn
+          li.right
+            a My Account
+        else
+          li.right
+            a Sign In
+        li.right
+          a Submit
+    block content
+    include ../includes/foot

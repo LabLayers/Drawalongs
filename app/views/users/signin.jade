@@ -1,0 +1,28 @@
+extends auth
+
+block auth
+  h2 Sign In
+  a.button-lift-ltgreen.deviantart(href='/auth/deviantart')
+    i.icon-deviantart  
+    | Sign in with deviantART
+  a.button-lift-ltgreen.github(href='/auth/github')
+    i.icon-octocat  
+    | Sign in with GitHub
+  hr
+  form.signin.form-horizontal(action="/users/session", method="post")
+    .form-group
+      label.col-md-4.control-label(for='email') Email
+      .col-md-8
+        input#email.form-control(type='text', name="email", placeholder='Email')
+
+    .form-group
+      label.col-md-4.control-label(for='password') Password
+      .col-md-8
+        input#password.form-control(type='password', name="password", placeholder='Password')
+
+    .form-group
+      .col-md-offset-4.col-md-8
+        button.btn.btn-primary(type='submit') Sign in
+        &nbsp;
+        | or&nbsp;
+        a.show-signup(href="/signup") Sign up

@@ -1,0 +1,226 @@
+// Reset
+@import "global/_reset.scss";
+
+// Variables
+@import "global/_colors.scss";
+@import "global/_vars.scss";
+$dadark: #617867;
+$dagreen: #b1e03e;
+
+// Grid System
+@import "global/_grid.scss";
+
+// Base
+@import "global/_base.scss";
+
+// Components
+@import "global/_scrollbars.scss";
+
+// Animations
+@import "global/_animations.scss";
+
+// Forms
+@import "global/_forms.scss";
+
+// Buttons
+@import "global/_buttons.scss";
+
+// Typography
+@import "global/_type.scss";
+// @import "../fonts_cache/_fonts_cache.scss";
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Varela+Round);
+
+// Prettyprint Code
+@import "global/_prettyprint-monokai.scss";
+
+// Modals
+@import "global/_modal.scss";
+
+// Long Shadows
+@import "global/_longshadows.scss";
+
+// Browsers
+@import "global/_browser.scss";
+
+// Icons
+@import "global/_stargazer.scss";
+
+// Navigation
+@import "global/_nav.scss";
+
+// Tooltips
+@import "global/_tooltips.scss";
+
+// Custom Variables
+$thickness: 4px;
+
+// Custom Styles
+body {
+    box-shadow: 0 0 20px black;
+    // font-size: 20px;
+    background-image: url(/images/pattern-noise.png);    
+    font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
+}
+
+h1, h2, h3, h4, h5, .btn, .nav {
+    font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
+    font-weight: bold;
+}
+
+header, section, footer {
+    position: relatve; width: 100%; overflow: hidden;
+    padding: 0px;
+    text-align: left;
+    padding: 40px 60px;
+}
+
+b {
+    font-weight: bold;
+}
+
+.transition {
+    transition: all .25s ease;
+    -webkit-transition: all .25s ease;
+}
+
+.button {
+    // @include button-lift($dark);
+    @extend .button-large;
+    font-size: inherit;
+    border-radius: 6px;
+    margin-right: 0.2em;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.button-lift-ltgreen {
+    @include button-lift($dagreen);
+    color: darken(#19689C, 10%);
+    text-shadow: 0 1px 0 #FFF;
+}
+
+.button-lift-light {
+    @include button-lift(#deddde);
+    color: darken(#deddde, 80%);
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+.dark-text-shadow {
+    // text-shadow: rgba(41, 52, 63, 0.4) 0px -1px 0px;
+    text-shadow: 0 1px rgba(0,0,0,.3);
+}
+
+// Login
+.box {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px rgba(80,80,80,.5);
+    h1 {
+        line-height: 1.15em;
+    }
+}
+.alert {
+    background: darken($red,15%);
+    color: white;
+    width: 75%;
+    margin: auto;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    box-shadow: 0 0px 4px rgba(0,0,0,.5);
+    text-align: center;
+    padding: 6px;
+}
+
+
+ul.details {
+    border-top: 1px dotted;
+    margin: 1em 2em;
+    li {
+        padding: .5em;
+        border-bottom: 1px dotted;
+    }
+}
+
+// Header
+header {
+    // background: #506256;
+    background: $blue;
+    color: $white;
+    // color: #D8E4D8;
+    box-shadow: 0 2px 0 rgba(255,255,255,0.8), 
+        inset 0 2px 0 rgba(50,50,50,0.5),
+        inset 0 -2px 0 rgba(50,50,50,0.5);
+    a.devart, a.github {
+        @extend .button-lift-ltgreen;
+        @extend .button-jumbo;
+        font-size: 120%;
+        display: block;
+        text-align: left;
+    }
+    a.other {
+        color: white;
+        float: right;
+        border-bottom: 1px dotted white;
+    }
+    &#about {
+        background: darken($orange,12%);
+    }
+    &#legal {
+        background: $purple;
+    }
+}
+
+// Error
+#error {
+    pre {
+    width: auto;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    }
+}
+
+// Auth
+#auth {
+    .box {
+        padding: 6px;
+        h2 {
+            text-align: center;
+        }
+    }
+}
+
+.gallery {
+    
+}
+
+footer {
+    background: $midnight-blue;
+    color: white;
+    box-shadow: 0 -2px 0 rgba(50,50,50,0.8), 
+        inset 0 2px 0 rgba(255,255,255,0.3),
+        inset 0 -2px 0 rgba(50,50,50,0.5);
+    a.right {
+        @include button-lift($dagreen);
+        color: darken(#19689C, 10%);
+        text-shadow: 0 1px 0 #FFF;
+    }
+    p.links a {
+        border-radius: 0px;
+        color: white;
+        border-bottom: 1px dotted white;
+    }
+    blockquote {
+        border-left: 2px solid white;
+        opacity: 0.5;
+        padding: 0.25em 1em;
+        max-width: 900px;
+        small {
+                display: block;
+            &:before {
+                content: '\2014 \00A0';
+            }
+        }
+    }
+}

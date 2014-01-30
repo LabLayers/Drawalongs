@@ -1,0 +1,22 @@
+extends layouts/default
+
+block content
+  div(data-ng-view)
+  script(type="text/javascript").
+    window.user = !{user};
+  footer
+    a.right(onclick='$("html, body").animate({ scrollTop: 0 }, 600);') Back to Top
+    p
+      i.icon-cc
+      |  2014 LabLayers and the Drawalongs Community.
+    p.links
+      a(href="#!/about") About
+      |  - 
+      a(href="#!/legal") Legal
+      |  - 
+      a(href="http://stauts.drawalongs.com/") Site Status
+      |  - 
+      a(href="mailto:abuse@drawalongs.com") Report Abuse
+    br
+    p
+      blockquote Have fun!

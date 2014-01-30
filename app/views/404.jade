@@ -1,0 +1,12 @@
+extends layouts/default
+
+block main
+
+block content
+  section#error
+    h1 You're Lost.
+    p.lead Please double-check and try again.
+    #error-stack-trace
+      pre
+        code!= error
+    p.lead In other words: HTTP 404 Not Found.

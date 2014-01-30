@@ -1,0 +1,14 @@
+extends layouts/default
+
+block main
+
+block content
+  section#error
+    h1 Encountered Some FOG.
+    p.lead Clouds go down so often we have a name for it - fog.
+        br
+        | No worries, the fog has been reported to the sun god and should clear up soon.
+    #error-stack-trace
+      pre.500
+        code!= error
+    p.lead In other words: HTTP 500 Internal Server Error.

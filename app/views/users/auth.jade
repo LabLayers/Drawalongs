@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block content
+  section.auth
+    .row
+      .col3
+        p :)
+      .col6
+        if message && message.length
+          .alert
+            strong #{message}
+        .box
+          block auth

@@ -1,0 +1,14 @@
+<section class="view" data-ng-controller="MatchesController" data-ng-init="findOne()">
+    <span>{{article.created | date:'medium'}}</span>/
+    <span>{{article.user.name}}</span>
+    <h2>{{article.title}}</h2>
+    <div data-ng-show="global.user._id == article.user._id">
+        <a class="btn" href="/#!/articles/{{article._id}}/edit">
+        	<i class="icon-pencil"></i> Pencil
+        </a> 
+        <a class="btn" data-ng-click="remove();">
+            <i class="icon-"></i> Remove
+        </a>
+    </div>
+    <div>{{article.content}}</div>
+</section>

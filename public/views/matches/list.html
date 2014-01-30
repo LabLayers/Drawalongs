@@ -1,0 +1,12 @@
+<section class="gallery" data-ng-controller="MatchesController" data-ng-init="find()">
+    <input type="text" ng-model="query" placeholder="search">
+	<ul class="articles thumbs">
+		<li data-ng-repeat="article in articles | filter:query">
+			<span>{{article.created | date:'medium'}}</span> /
+			<span>{{article.user.name}}</span>
+			<h2><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+			<div>{{article.content}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!articles || articles.length">Nothing found. <br> Why don't you <a href="/#!/articles/create">submit something</a>?</h1>
+</section>
