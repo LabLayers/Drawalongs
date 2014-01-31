@@ -1,10 +1,14 @@
+<header id="profile" data-ng-controller="ArticlesController">
+    <h1>Browse</h1>
+    <p>Look around.</p>
+</header>
 <section class="gallery" data-ng-controller="ArticlesController" data-ng-init="find()">
     <input type="text" ng-model="query" placeholder="search">
 	<ul class="articles thumbs">
 		<li data-ng-repeat="article in articles | filter:query">
-			<span>{{article.created | date:'medium'}}</span> /
-			<span>{{article.user.name}}</span>
-			<h2><a data-ng-href="#!/art/{{article._id}}">{{article.title}}</a></h2>
+			<span><span class="meta">date:</span>{{article.created | date:'medium'}}</span> /
+			<span><span class="meta">artist:</span>{{article.user.name}}</span>
+			<h2><span class="meta">title:</span><a data-ng-href="#!/art/{{article._id}}">{{article.title}}</a></h2>
 			<div>{{article.content}}</div>
 		</li>
 	</ul>

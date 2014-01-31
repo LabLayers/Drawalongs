@@ -1,0 +1,59 @@
+<header id="profile" data-ng-controller="HeaderController">
+    <span class="avatar"><img src="{{global.user.avatar}}" alt=":)"></span>
+    <h1>{{global.user.name}}</h1>
+    <p>This is you.</p>
+</header>
+<div class="notice" data-ng-controller="HeaderController">
+    <b>Note:</b> Artist profiles are coming soon! In the meantime, you find your submissions by searching <a href="#!/browse?search=artist:{{global.user.name}}">artist:{{global.user.name}}</a>.
+</div>
+<section id="account" data-ng-controller="HeaderController">
+    <h2>Information</h2>
+    <table class="table">
+        <tr>
+            <th>Display Name:</th>
+            <td>{{global.user.name}}</td>
+        </tr>
+        <tr>
+            <th> Username:</th>
+            <td>{{global.user.username}}</td>
+        </tr>
+        <tr>
+            <th>Avatar:</th>
+            <td data-ng-show="global.user.avatar">{{global.user.avatar}} <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
+            <td data-ng-hide="global.user.avatar">{{global.user.email}} from Gravatar <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
+        </tr>
+        <tr>
+            <th>E-Mail:</th>
+            <td>{{global.user.email}}</td>
+        </tr>
+        <tr>
+            <th>Auth Credentials:</th>
+            <td><i class="icon-{{global.user.provider}}"></i> {{global.user.provider}}</td>
+        </tr>
+        <tr>
+            <th>User ID:</th>
+            <td>{{global.user._id}}</td>
+        </tr>
+        <tr>
+            <th>Tagline:</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Color Accent:</th>
+            <td></td>
+        </tr>
+    </table>
+</section>
+<section id="delete" data-ng-controller="HeaderController">
+    <h2>Deletion</h2>
+    <p>Once your account is deleted:</p>
+    <br>
+    <ul>
+        <li><i class="icon-emo-blink"></i> Anything* you have posted to Drawalongs will be deleted for all eternity.</li>
+        <li><i class="icon-emo-blink"></i> You can always create a new account later.</li>
+    </ul>
+    <small>* If you commented via a third-party system, you may want to double-check them carefully. </small>
+    <br>
+    <br>
+    <p>To request your account to be deleted, please e-mail delete@drawalongs.com.</p>
+</section>

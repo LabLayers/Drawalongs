@@ -64,7 +64,7 @@ nav {
                 font-size: 28px;
                 margin-left: -20px;
             }
-            ul.dropdown {
+            ul.dropdown-menu {
                 *display: none;
                 opacity: 0;
                 width: 100%!important;
@@ -90,7 +90,7 @@ nav {
             &.dropdown-toggle.open { //, &:not(.right):hover, &.dropdown-toggle:hover {
                 background: #3C4441;
             }
-            &.dropdown-toggle.open ul.dropdown, &:hover ul.dropdown {
+            &.dropdown-toggle.open ul.dropdown-menu, &:hover ul.dropdown-menu {
                 *display: block;
                 opacity: 1;
                 visibility: visible;

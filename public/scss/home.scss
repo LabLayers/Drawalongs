@@ -55,10 +55,11 @@ $dagreen: #b1e03e;
 $thickness: 4px;
 
 // Custom Styles
-body {
-    box-shadow: 0 0 20px black;
-    // font-size: 20px;
+body {  
+    box-shadow: inset 0 60px #617867;
     background-image: url(/images/pattern-noise.png);    
+    width: auto;
+    // font-size: 20px;
     font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
 }
 
@@ -76,6 +77,10 @@ header, section, footer {
 
 b {
     font-weight: bold;
+}
+
+.ng-scope {
+    -webkit-animation: fade-in .25s ease;
 }
 
 .transition {
@@ -108,6 +113,33 @@ b {
 .dark-text-shadow {
     // text-shadow: rgba(41, 52, 63, 0.4) 0px -1px 0px;
     text-shadow: 0 1px rgba(0,0,0,.3);
+}
+
+.border-bottom-white {
+    border-bottom: 1px dotted white;
+    border-radius: 0px;
+    &:hover {
+        border-bottom: 1px solid white;
+    }
+    &:focus, &:active {
+        border-bottom: 3px solid white!important;
+    }
+}
+
+// Sticky Footer
+// -@ http://ryanfait.com/html5-sticky-footer/layout.css
+
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto; // -252px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+    // height: 252px; /* '.push' must be the same height as 'footer' */
 }
 
 // Login
@@ -161,13 +193,30 @@ header {
     a.other {
         color: white;
         float: right;
-        border-bottom: 1px dotted white;
+        @extend .border-bottom-white;
     }
     &#about {
         background: darken($orange,12%);
     }
     &#legal {
         background: $purple;
+    }
+    @extend .dark-text-shadow;
+    span.avatar {
+        float: left;
+        vertical-align: middle;
+        margin-right: 20px;
+        margin-top: 24px;
+        position: relative;
+        border-radius: 4px;
+        padding: 4px;
+        background: rgba(0,0,0,.5);
+        line-height: 1em;
+        img {
+            display: block;
+            max-height: 50px;
+            width: auto;
+        }
     }
 }
 
@@ -191,6 +240,75 @@ header {
     }
 }
 
+// View
+section.view {
+}
+
+// Bubble
+.bubble {
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    img {
+        box-shadow: 0 0 12px rgba(0,0,0,.5);
+        max-width: 100%;
+        max-height: 70%;
+        height: auto;
+        margin: auto;
+        cursor: -webkit-zoom-in;
+        cursor: zoom-in;
+        transition: all 0.15s ease-in-out;
+        -webkit-transition: all 0.15s ease-in-out;
+    }
+}
+.bubble-zoom .bubble {
+    overflow-x: scroll!important;
+    margin-top: -40px;
+    margin-left: -60px;
+    margin-right: -60px;
+    // width: 100%;
+    img {
+        box-shadow: 0 0 12px rgba(0,0,0,.5);
+        max-width: initial;
+        max-height: initial;
+        height: auto;
+        margin: auto;
+        display: block;
+        cursor: -webkit-zoom-out;
+        cursor: zoom-out;
+    }
+}
+
+// Account
+#account {
+    table {
+        border-collapse: collapse;
+        border-radius: 4px;
+        border: 1px solid black;
+        overflow: hidden;
+        box-shadow: 0 3px 7px 1px rgba(0,0,0,.5);
+    }
+    th, tr, td {
+        border: 1px solid gray;
+        padding: 8px;
+        background: white;
+    }
+}
+
+.notice {
+    background: rgb(170,50,50);
+    color: white;
+    padding: 1em 60px;
+    box-shadow: inset 0 -2px rgba(0,0,0,.5);
+    margin-top: -2px;
+    @extend .dark-text-shadow;
+    a {
+        color: white;
+        @extend .border-bottom-white;
+    }
+}
 .gallery {
     
 }
@@ -209,7 +327,7 @@ footer {
     p.links a {
         border-radius: 0px;
         color: white;
-        border-bottom: 1px dotted white;
+        @extend .border-bottom-white;
     }
     blockquote {
         border-left: 2px solid white;

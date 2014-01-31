@@ -1,8 +1,8 @@
 <section class="view" data-ng-controller="ArticlesController" data-ng-init="findOne()">
-    <span>{{article.created | date:'medium'}}</span>/
-    <span>{{article.user.name}}</span>
+    <div class="bubble" id="bubble">{{article.url}}</div>
     <h2>{{article.title}}</h2>
-    <div data-ng-show="global.user._id == article.user._id">
+    <span>by <a href="/#!/browse/?search={{article.user.name}}">{{article.user.name}}</a></span>
+    <div data-ng-show="global.user._id == article.user._id" class="box">
         <a class="button-lift-light" href="/#!/art/{{article._id}}/edit">
         	<i class="icon-edit"></i> Pencil
         </a> 
@@ -11,4 +11,43 @@
         </a>
     </div>
     <div>{{article.content}}</div>
+    <span>Submitted on: {{article.created | date:'medium'}}</span>
+    <span>Submitted for: {{article.match}}</span>
+    {{article._id}}
+    <div disqus="article._id" class="box"></div>
+    <script>
+
+    $("#bubble").bind("DOMSubtreeModified", function() {
+        getURL = document.getElementById('bubble').textContent;
+        console.log(getURL);
+        if ( getURL.indexOf('gist') !== -1 ){
+            console.log('contains gist');
+            // document.write( '\<script src="' + getURL + '.js"\>\<\/script\>' );
+        }
+        if ( getURL.indexOf('deviantart') !== -1 ){
+            console.log('contains deviantart');
+            var oembed_url = 'http://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                console.log('Deviation by: ' + data.author_name);
+                var divData = '<img src="' + data.url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+        if ( getURL.indexOf('sta.sh') !== -1 ){
+            console.log('contains sta.sh');
+            var oembed_url = 'http://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                console.log('Deviation by: ' + data.author_name);
+                var divData = '<img src="' + data.url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+        // if( getURL.indexOf('gist') >= 0){
+        //   // Found world d
+        //     $( "#bubble" ).append( "<p>Test</p>" );
+        // } else {
+        //     $( "#bubble" ).append( "<p>Test</p>" );
+        // }
+    });
+    </script>
 </section>

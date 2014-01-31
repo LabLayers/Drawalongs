@@ -22,6 +22,9 @@ angular.module('mean').config(['$routeProvider',
         when('/legal', {
             templateUrl: 'views/static/legal.html'
         }).
+        when('/profile', {
+            templateUrl: 'views/profile.html'
+        }).
         when('/', {
             templateUrl: 'views/index.html'
         }).
@@ -35,5 +38,12 @@ angular.module('mean').config(['$routeProvider',
 angular.module('mean').config(['$locationProvider',
     function($locationProvider) {
         $locationProvider.hashPrefix('!');
+    }
+]);
+
+//Setting HTML5 Location Mode
+angular.module('mean').config(['$disqusProvider',
+    function($disqusProvider) {
+        $disqusProvider.setShortname('drawalongs');
     }
 ]);

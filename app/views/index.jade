@@ -1,7 +1,8 @@
 extends layouts/default
 
 block content
-  div(data-ng-view)
+  div.wrapper(data-ng-view)
+  div.push
   script(type="text/javascript").
     window.user = !{user};
   footer
@@ -9,12 +10,16 @@ block content
     p
       i.icon-cc
       |  2014 LabLayers and the Drawalongs Community.
+      br
+      small Unless otherwise explicitly specified, all artwork is copyrighted to the original owner.
     p.links
       a(href="#!/about") About
       |  - 
       a(href="#!/legal") Legal
       |  - 
       a(href="http://stauts.drawalongs.com/") Site Status
+      |  - 
+      a(href="http://astrikos.deviantart.com/journal/Small-steps-Preventing-Art-Theft-on-dA-350688751") Stop Art Theft
       |  - 
       a(href="mailto:abuse@drawalongs.com") Report Abuse
     br

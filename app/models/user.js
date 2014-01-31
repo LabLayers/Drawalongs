@@ -20,7 +20,7 @@ var UserSchema = new Schema({
     hashed_password: String,
     avatar: {
         type: String,
-        default: '',
+        default: 'http://i.imgur.com/Fl7qdbQ.png',
     },
     provider: String,
     salt: String,

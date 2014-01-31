@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles']);
+angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'ngDisqus']);
 
 angular.module('mean.system', []);
 angular.module('mean.articles', []);
@@ -33,4 +33,17 @@ function launch(obj) {
         setTimeout( function() { el3.classList.remove('hidden'); }, 100);
         el3.classList.add('visible');
 }
+
+// Dropdown Functions
+function logout() {
+    window.location.assign("/signout")
+}
+function profile() {
+    window.location.assign("/#!/profile")
+}
+
+// Zoom
+$(document).on('click', '.bubble img', function () {
+    $("body").toggleClass("bubble-zoom");
+});
 /*ignore jslint end*/
