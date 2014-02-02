@@ -116,7 +116,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
   min-width: 100px; }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 900px) {
   .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
     display: block;
     width: 100%; } }
@@ -1255,81 +1255,23 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
 .onoff input[type=checkbox]:checked + label {
   left: 43px; }
 
-.checkbox {
-  width: 20px;
-  margin: 20px auto;
-  position: relative; }
-  .checkbox input {
-    visibility: hidden; }
-
-.checkbox label {
-  cursor: pointer;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-  background: #fcfff4;
-  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 ); }
-
-.checkbox label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  content: '';
-  position: absolute;
-  width: 9px;
-  height: 5px;
-  background: transparent;
-  top: 4px;
-  left: 4px;
-  border: 3px solid #333;
-  border-top: none;
-  border-right: none;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
-
-.checkbox label:hover::after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-  filter: alpha(opacity=30);
-  opacity: 0.5; }
-
-.checkbox input[type=checkbox]:checked + label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-  opacity: 1; }
-
-.field {
-  border: 2px solid black;
-  box-shadow: 0 0 4px black;
-  color: #4f4e4c;
-  display: block;
-  font-size: 15px;
-  padding: 8px 12px;
-  margin: 0.2em auto;
-  height: 42px;
-  border-radius: 6px;
-  box-shadow: none;
-  outline: none;
-  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear, box-shadow .25s linear;
-  transition: border .25s linear, color .25s linear, background-color .25s linear, box-shadow .25s linear; }
-
 .field:active, .field:focus {
   border-color: #62bc4d;
   box-shadow: 0 0 12px black; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, footer a.right {
+.form-control {
+  display: block;
+  width: 100%;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 0px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-bottom: 4px solid gray;
+  outline: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
+
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   color: inherit;
   padding: 6px 8px;
   font-size: 14px;
@@ -1350,7 +1292,7 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
 .button-circle {
   border-radius: 300px; }
 
-.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, footer a.right {
+.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: 18px;
   line-height: 1.2em; }
 
@@ -1407,7 +1349,7 @@ p.hero {
   font-size: 40px;
   line-height: 1.4em; }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 900px) {
   body {
     font-size: 17px; }
 
@@ -1558,7 +1500,7 @@ window {
   window img.iepony {
     float: left; }
   window div.content {
-    padding: 12px 0px; }
+    padding: 12px 12px; }
     window div.content div.body hr {
       margin: 0.4em 0; }
   window div.footer {
@@ -1598,7 +1540,7 @@ modal.visible window {
   -moz-transition: all .3s ease-out;
   transition: all .3s ease-out; }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 900px) {
   modal window {
     top: 0 !important;
     left: 0;
@@ -2293,68 +2235,163 @@ nav {
         transform: translateX(0);
         -webkit-transform: translateX(0); }
 
-attr {
+/*! 
+ * angular-loading-bar v0.1.1
+ * https://chieffancypants.github.io/angular-loading-bar
+ * Copyright (c) 2013 Wes Cruver
+ * License: MIT
+ */
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all; }
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1; }
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 2px; }
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  -webkit-transform: rotate(1deg) translate(0px, -1px);
+  -moz-transform: rotate(1deg) translate(0px, -1px);
+  -ms-transform: rotate(1deg) translate(0px, -1px);
+  -o-transform: rotate(1deg) translate(0px, -1px);
+  transform: rotate(1deg) translate(0px, -1px); }
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  top: 10px;
+  left: 10px; }
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: white;
+  border-left-color: white;
+  border-radius: 10px;
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation: loading-bar-spinner 400ms linear infinite;
+  -ms-animation: loading-bar-spinner 400ms linear infinite;
+  -o-animation: loading-bar-spinner 400ms linear infinite;
+  animation: loading-bar-spinner 400ms linear infinite; }
+
+body.viewing-content #loading-bar-spinner .spinner-icon {
+  border: solid 2px transparent;
+  border-top-color: #4f4e4c;
+  border-left-color: #4f4e4c; }
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-moz-keyframes loading-bar-spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-o-keyframes loading-bar-spinner {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-ms-keyframes loading-bar-spinner {
+  0% {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.ng-hide {
+  display: none !important; }
+
+.ng-enter,
+.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all; }
+
+.wrapper.ng-enter {
+  opacity: 0;
   position: relative;
-  z-index: 1;
-  transition: background 0.2s ease, color 0.2s ease;
-  -webkit-transition: background 0.2s ease, color 0.2s ease; }
-  attr:hover {
-    background: rgba(0, 0, 0, 0.5);
-    color: white; }
-  attr tooltip {
-    position: absolute;
-    top: 2em;
-    left: 0px;
-    border-radius: 4px;
-    z-index: 5;
-    visibility: hidden;
-    color: black;
-    background: linear-gradient(white, #c8c8c8);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    -webkit-user-select: none;
-    cursor: default;
-    transform: translateY(12px);
-    -webkit-transform: translateY(12px);
-    transition: all 0.2s ease;
-    -webkit-transition: all 0.2s ease; }
-    attr tooltip:before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-width: 10px;
-      border-style: solid;
-      border-color: transparent transparent white transparent;
-      top: -20px;
-      left: 30px; }
-    attr tooltip.dark {
-      color: white;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), black);
-      box-shadow: 0px 0px 2px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset; }
-      attr tooltip.dark:before {
-        border-color: transparent transparent rgba(255, 255, 255, 0.4) transparent; }
-    attr tooltip li {
-      list-style: none;
-      padding: 2px 14px;
-      font-size: 14px;
-      line-height: 1.5em;
-      border-bottom: 1px solid rgba(200, 200, 200, 0.5);
-      display: block; }
-      attr tooltip li:last-child {
-        border-bottom: none; }
-  attr:hover tooltip {
-    transform: translateY(0);
-    -webkit-transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    display: block; }
+  width: 100%; }
+
+.wrapper.ng-leave.ng-leave-active {
+  position: absolute;
+  width: 100%;
+  display: block;
+  opacity: 0; }
+
+.ng-leave,
+.ng-enter.ng-enter-active {
+  opacity: 1; }
 
 body {
   box-shadow: inset 0 60px #617867;
   background-image: url(/images/pattern-noise.png);
   width: auto;
   font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial; }
+  body.noscroll {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important; }
 
 h1, h2, h3, h4, h5, .btn, .nav {
   font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
@@ -2366,7 +2403,12 @@ header, section, footer {
   overflow: hidden;
   padding: 0px;
   text-align: left;
-  padding: 40px 60px; }
+  padding: 40px 60px;
+  background-position: center;
+  background-size: cover; }
+
+.wrapper {
+  min-height: 200px; }
 
 b {
   font-weight: bold; }
@@ -2378,7 +2420,7 @@ b {
   transition: all .25s ease;
   -webkit-transition: all .25s ease; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, footer a.right {
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: inherit;
   border-radius: 6px;
   margin-right: 0.2em;
@@ -2415,8 +2457,28 @@ b {
     box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
     background-color: #cac8ca; }
 
+.border.button-lift-ltgreen, nav menu > li a.border.submit, header a.border.devart, header a.border.github, .border.button-lift-light, .border.button, .border.button.red, .edit .apps a.border, .edit #uploader button.border, footer a.border.right {
+  border-radius: 0px;
+  color: #1e98d3;
+  border: 1px solid #1e98d3; }
+  .border.button-lift-ltgreen:hover, nav menu > li a.border.submit:hover, header a.border.devart:hover, header a.border.github:hover, .border.button-lift-light:hover, .border.button:hover, .edit .apps a.border:hover, .edit #uploader button.border:hover, footer a.border.right:hover {
+    background: #1e98d3;
+    color: white; }
+  .border.button-lift-ltgreen:first-of-type, nav menu > li a.border.submit:first-of-type, header a.border.devart:first-of-type, header a.border.github:first-of-type, .border.button-lift-light:first-of-type, .border.button:first-of-type, .edit .apps a.border:first-of-type, .edit #uploader button.border:first-of-type, footer a.border.right:first-of-type {
+    margin-left: 0.2em; }
+  .border.red.button-lift-ltgreen, nav menu > li a.border.red.submit, header a.border.red.devart, header a.border.red.github, .border.red.button-lift-light, .border.red.button, .edit .apps a.border.red, .edit #uploader button.border.red, footer a.border.red.right {
+    border-radius: 0px;
+    color: #ee4144;
+    border: 1px solid #ee4144; }
+    .border.red.button-lift-ltgreen:hover, nav menu > li a.border.red.submit:hover, header a.border.red.devart:hover, header a.border.red.github:hover, .border.red.button-lift-light:hover, .border.red.button:hover, .edit .apps a.border.red:hover, .edit #uploader button.border.red:hover, footer a.border.red.right:hover {
+      background: #ee4144;
+      color: white; }
+
 .dark-text-shadow, header, .notice {
   text-shadow: 0 1px rgba(0, 0, 0, 0.3); }
+
+.float-text-shadow {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important; }
 
 .border-bottom-white, header a.other, .notice a, footer p.links a {
   border-bottom: 1px dotted white;
@@ -2502,6 +2564,140 @@ header {
   #auth .box h2 {
     text-align: center; }
 
+.edit .apps a {
+  background: #3879bb;
+  color: white;
+  transition: background-color .2s, box-shadow .1s;
+  box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  text-shadow: 0 1px 0 rgba(100, 100, 100, 0.5);
+  text-align: center;
+  text-align: left;
+  min-height: 2.5em;
+  line-height: 1em;
+  padding: 1em; }
+  .edit .apps a:hover {
+    box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 3px rgba(0, 0, 0, 0.2);
+    background-color: #6198d0; }
+  .edit .apps a:active, .edit .apps a:focus {
+    box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #2f659c; }
+  .edit .apps a span {
+    font-size: 80%;
+    display: block;
+    line-height: 1.4em; }
+  .edit .apps a img {
+    margin: -0.3em 1em 0em -0.3em;
+    border-radius: 6px;
+    overflow: hidden; }
+.edit #uploader div {
+  border: 10px solid black;
+  text-align: center;
+  padding: 50px;
+  line-height: 1.5em;
+  width: 100%;
+  margin: auto;
+  font-size: 40px;
+  display: block; }
+.edit #uploader #link, .edit #uploader p, .edit #uploader div {
+  display: none; }
+.edit #uploader div {
+  display: inline-block; }
+.edit #uploader.uploading div {
+  display: none !important; }
+.edit #uploader.uploaded div {
+  display: none !important; }
+.edit #uploader.uploading p {
+  display: inline !important; }
+.edit #uploader.uploaded #link {
+  display: inline-block !important; }
+.edit #uploader em {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+.edit #uploader button {
+  background: #62bc4d;
+  color: white;
+  transition: background-color .2s, box-shadow .1s;
+  box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: auto;
+  font-size: 18px; }
+  .edit #uploader button:hover {
+    box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 3px rgba(0, 0, 0, 0.2);
+    background-color: #89cd79; }
+  .edit #uploader button:active, .edit #uploader button:focus {
+    box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #51a33d; }
+.edit #uploader a {
+  display: block;
+  margin: 3em 0; }
+
+#damuro-controller {
+  position: fixed;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 999;
+  margin: 0;
+  left: 0;
+  transition: top 1.25s ease;
+  -webkit-transition: top 1.25s ease;
+  background: white; }
+  #damuro-controller .muro-toolbar {
+    position: absolute;
+    cursor: pointer;
+    background: darkRed;
+    color: white;
+    z-index: 1000;
+    width: 90px;
+    font-size: 12px;
+    text-align: center;
+    right: 20px;
+    border-radius: 4px;
+    top: 9px; }
+    #damuro-controller .muro-toolbar:after {
+      display: none;
+      content: 'Check your thumbnail before saving!';
+      position: absolute;
+      top: 40px;
+      color: black;
+      right: 0px;
+      width: 296px;
+      font-size: 120%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      line-height: 3em;
+      border-radius: 4px;
+      padding: 4px 2px; }
+    #damuro-controller .muro-toolbar:hover:after {
+      display: block; }
+  #damuro-controller.visible {
+    height: 100%;
+    top: 0px; }
+  #damuro-controller .damuro-container {
+    height: 100% !important;
+    width: 100% !important;
+    background: white; }
+  #damuro-controller a .left {
+    display: block; }
+  #damuro-controller .muro-save {
+    display: none;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    line-height: 40px;
+    text-align: center; }
+  #damuro-controller.saving .muro-save {
+    display: block; }
+
 .bubble {
   text-align: center;
   user-select: none;
@@ -2533,6 +2729,9 @@ header {
     display: block;
     cursor: -webkit-zoom-out;
     cursor: zoom-out; }
+
+#canigetridofthis window:hover {
+  box-shadow: 0 0 80px red; }
 
 #account table {
   border-collapse: collapse;

@@ -49,7 +49,10 @@ $dagreen: #b1e03e;
 @import "global/_nav.scss";
 
 // Tooltips
-@import "global/_tooltips.scss";
+// @import "global/_tooltips.scss";
+
+// Loading Bar
+@import "global/_loading-bar.scss";
 
 // Custom Variables
 $thickness: 4px;
@@ -61,6 +64,10 @@ body {
     width: auto;
     // font-size: 20px;
     font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
+    &.noscroll {
+        overflow-x: hidden!important;
+        overflow-y: hidden!important;
+    }
 }
 
 h1, h2, h3, h4, h5, .btn, .nav {
@@ -73,6 +80,12 @@ header, section, footer {
     padding: 0px;
     text-align: left;
     padding: 40px 60px;
+    background-position: center;
+    background-size: cover;
+}
+
+.wrapper {
+    min-height: 200px;
 }
 
 b {
@@ -110,9 +123,23 @@ b {
     text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 
+.button.border {
+    @include button-border($blue);
+    &:first-of-type {
+        margin-left: 0.2em;
+    }
+    &.red {
+        @include button-border($red);
+    }
+}
+
 .dark-text-shadow {
     // text-shadow: rgba(41, 52, 63, 0.4) 0px -1px 0px;
     text-shadow: 0 1px rgba(0,0,0,.3);
+}
+
+.float-text-shadow {
+    text-shadow: 0 0 5px rgba(0,0,0,.8)!important;
 }
 
 .border-bottom-white {
@@ -240,6 +267,130 @@ header {
     }
 }
 
+// Submit
+.edit {
+    .apps a {
+        @include button-lift(#3879BB);
+        display: block;
+        text-shadow: 0 1px 0 rgba(100,100,100,.5);
+        text-align: center;
+        text-align: left;
+        min-height: 2.5em;
+        line-height: 1em;
+        padding: 1em;
+        span {
+            font-size: 80%;
+            display: block;
+            line-height: 1.4em;
+        }
+        img {
+            margin: -0.3em 1em 0em -0.3em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+    }
+    #uploader {
+        div {
+            border: 10px solid black; text-align: center; padding: 50px;
+            line-height: 1.5em;
+            width: 100%; margin: auto; font-size: 40px;
+            display: block;
+        }
+        #link, p , div {display: none}
+        div {display: inline-block;}
+        &.uploading div {display: none!important}
+        &.uploaded div {display: none!important}
+        &.uploading p {display: inline!important}
+        &.uploaded #link {display: inline-block!important;}
+        em {position: absolute; bottom: 0; right: 0}
+        button {
+            @include button-lift($green);
+            display: block;
+            margin: auto;
+            font-size: 18px;
+        }
+        a {
+            display: block;
+            margin: 3em 0;
+        }
+    }
+}
+
+// Muro
+#damuro-controller {
+    position: fixed;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 999;
+    margin: 0;
+    left: 0;
+    transition: top 1.25s ease;
+    -webkit-transition: top 1.25s ease;
+    background: white;
+    .muro-toolbar {
+        position: absolute;
+        cursor: pointer;
+        background: darkRed;
+        color: white;
+        z-index: 1000;
+        width: 90px;
+        font-size: 12px;
+        text-align: center;
+        right: 20px;
+        border-radius: 4px;
+        top: 9px;
+        &:after {
+            display: none;
+            content:'Check your thumbnail before saving!';
+            position: absolute;
+            top: 40px;
+            color: black;
+            right: 0px;
+            width:296px;
+            font-size: 120%;
+            background: rgba(0,0,0,.8);
+            color: white;
+            line-height: 3em;
+            border-radius: 4px;
+            padding: 4px 2px;
+        }
+        &:hover:after {
+            display: block;
+        }
+    }
+    &.visible {
+        height: 100%;
+        top: 0px;
+    }
+    .damuro-container {
+        height: 100%!important;
+        width: 100%!important;
+        background: white;
+    }
+    a {
+        .left {
+            display: block
+        }
+    }
+    .muro-save {
+        display: none;
+        z-index: 2000;
+        background: rgba(0,0,0,.5);
+        color: white;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        line-height: 40px;
+        text-align: center;
+    }
+    &.saving .muro-save {
+        display: block;
+    }
+}
+
 // View
 section.view {
 }
@@ -279,6 +430,11 @@ section.view {
         cursor: -webkit-zoom-out;
         cursor: zoom-out;
     }
+}
+
+// Delete
+#canigetridofthis window:hover {
+    box-shadow: 0 0 80px red;
 }
 
 // Account

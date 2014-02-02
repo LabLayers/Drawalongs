@@ -22,6 +22,9 @@ angular.module('mean').config(['$routeProvider',
         when('/legal', {
             templateUrl: 'views/static/legal.html'
         }).
+        when('/status', {
+            templateUrl: 'views/status.html'
+        }).
         when('/profile', {
             templateUrl: 'views/profile.html'
         }).

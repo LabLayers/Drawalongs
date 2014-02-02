@@ -1,22 +1,32 @@
 <section class="view" data-ng-controller="ArticlesController" data-ng-init="findOne()">
-    <div class="bubble" id="bubble">{{article.url}}</div>
+    <div class="bubble" id="bubble"><a href="{{article.url}}">{{article.url}}</a></div>
     <h2>{{article.title}}</h2>
     <span>by <a href="/#!/browse/?search={{article.user.name}}">{{article.user.name}}</a></span>
     <div data-ng-show="global.user._id == article.user._id" class="box">
         <a class="button-lift-light" href="/#!/art/{{article._id}}/edit">
-        	<i class="icon-edit"></i> Pencil
+        	<i class="icon-edit"></i> Edit Entry
         </a> 
-        <a class="button-lift-light" data-ng-click="remove();">
-            <i class="icon-remove"></i> Remove
+        <a class="button-lift-light" onclick="launch('canigetridofthis')">
+            <i class="icon-remove"></i> Delete
         </a>
     </div>
+    <modal data-ng-show="global.user._id == article.user._id" id="canigetridofthis" style="display: none;" class="hidden">
+        <window>
+            <h1>Delete Confirmation <a onclick="blast('canigetridofthis')" class="right"><i class="icon-close"></i></a></h1>
+            <div class="content">
+                <p>Are you sure that you want to delete "{{article.title}}", along with all its comments?</p>
+            </div>
+            <hr>
+            <a data-ng-click="remove();" class="button border red right">Let's Do It!</a>
+            <a onclick="blast('canigetridofthis')" class="button border right">Nevermind</a>
+        </window>
+    </modal> 
     <div>{{article.content}}</div>
     <span>Submitted on: {{article.created | date:'medium'}}</span>
     <span>Submitted for: {{article.match}}</span>
     {{article._id}}
     <div disqus="article._id" class="box"></div>
     <script>
-
     $("#bubble").bind("DOMSubtreeModified", function() {
         getURL = document.getElementById('bubble').textContent;
         console.log(getURL);
@@ -26,7 +36,7 @@
         }
         if ( getURL.indexOf('deviantart') !== -1 ){
             console.log('contains deviantart');
-            var oembed_url = 'http://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
             $.getJSON(oembed_url, function(data) {
                 console.log('Deviation by: ' + data.author_name);
                 var divData = '<img src="' + data.url + '"/>';
@@ -35,13 +45,26 @@
         };
         if ( getURL.indexOf('sta.sh') !== -1 ){
             console.log('contains sta.sh');
-            var oembed_url = 'http://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
             $.getJSON(oembed_url, function(data) {
                 console.log('Deviation by: ' + data.author_name);
                 var divData = '<img src="' + data.url + '"/>';
                 $('#bubble').html(divData);
             });
         };
+        if ( getURL.indexOf('imgur') !== -1 ){
+            console.log('contains imgur');
+            var oembed_url = 'https://noembed.com/embed?url=' + getURL + '&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                var divData = '<img src="' + data.media_url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+        // if ( getURL.indexOf('imgur') == -1 ) {
+        //     console.log('contains no content');
+        //         var divData = '<br><a href="getURL">getURL</a>';
+        //         $('#bubble').html(divData);
+        // };
         // if( getURL.indexOf('gist') >= 0){
         //   // Found world d
         //     $( "#bubble" ).append( "<p>Test</p>" );

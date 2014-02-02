@@ -3,6 +3,10 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
     $scope.global = Global;
 
+    $scope.set = function(new_url) {
+        this.url = new_url;
+    };
+    
     $scope.create = function() {
         var article = new Articles({
             url: this.url,
@@ -65,4 +69,5 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             $scope.article = article;
         });
     };
+
 }]);

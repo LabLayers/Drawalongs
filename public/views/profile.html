@@ -19,8 +19,8 @@
         </tr>
         <tr>
             <th>Avatar:</th>
-            <td data-ng-show="global.user.avatar">{{global.user.avatar}} <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
-            <td data-ng-hide="global.user.avatar">{{global.user.email}} from Gravatar <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
+            <td data-ng-show="global.user.provider != 'deviantart'">{{global.user.email}} from Gravatar <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
+            <td data-ng-show="global.user.provider == 'deviantart'">{{global.user.avatar}} <a onclick="reloadAvatar()" class="button-lift-ltgreen">Reload Avatar</a></td>
         </tr>
         <tr>
             <th>E-Mail:</th>

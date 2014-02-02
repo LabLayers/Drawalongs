@@ -1,25 +1,302 @@
-<header>
+<header id="submit">
 	<h1>Submit</h1>
 	<p>Share your ideas with the world.</p>
 </header>
-<section class="submit" data-ng-controller="ArticlesController">
-	<form class="form-horizontal col-md-6" role="form" data-ng-submit="create()">
-			<label for="title" class="col-md-2 control-label">URL</label>
-				<input type="text" class="form-control" data-ng-model="url" id="url" placeholder="URL" required>
+<div id="damuro-controller" class="hidden">
+	<div class="muro-toolbar" onclick="closeMuro();">Save to Imgur</div>
+	<div class="muro-save">Saving...</div>
+</div>
+<section class="edit edit-new" data-ng-controller="ArticlesController">
+<form role="form" data-ng-submit="create()">
+	<div class="row apps">
+		<div class="col4 hidden-mobile">
+			<h4>Start Drawing</h4>
+			Save your art directly to Drawalongs.
+			<a class="app-muro" onclick="openMuro()">
+				<img src="http://i.imgur.com/LovuvIF.png?1?9455" alt="icon" class="left" width="50" height="50">
+				DeviantART Muro
+				<span>Draw Online with HTML5</span>
+			</a>
+			<a target="_new" href="sketchbook://savepath:http://drawalongs.com/#!/submit?{!!BASE64.png}" class="app-sketchbook">
+				<img src="http://i.imgur.com/Pbyvyal.jpg" alt="icon" class="left" width="50" height="50">
+				Sketchbook (Desktop)
+				<span>Requires Installation, Windows Only</span></a>
+			<h4>External Apps</h4>
+			<a href="http://pixlr.com/" class="app-pixlr" target="_blank">
+				<img src="http://i.imgur.com/QghhNzW.png?1?9746" alt="icon" class="left" width="50" height="50">
+				Pixlr
+				<span>Advanced Image Editor</span>
+			</a>
+			<a href="http://gist.github.com/" class="app-github" target="_blank">
+				<img src="http://i.imgur.com/ZnQqoZb.png?3?2690" alt="icon" class="left" width="50" height="50">
+				GitHub Gist
+				<span>For Code &amp; Literature</span>
+			</a>
+			(You can copy &amp; paste the URL.)
+		</div>
+		<div class="col8">
+			<h4>Select an Image</h4>
+			Draw with your favorite app and drag to upload right here.
+			<div id="uploader">
+				<div data-upload="upload">
+					<span>DRAG TO UPLOAD<span>
+					<br>
+				<button onclick="document.querySelector('input').click()">Or click here to select a file!</button></div>
+				<input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
+				<p>Uploading...</p>
+				<br>
+				<a target="_blank" id="link">
+					Your image has been uploaded! <i class="icon-chevron-right"></i>
+					<span>View on Imgur</span>
+				</a>
+			</div>
 			<br>
-			<label for="title" class="col-md-2 control-label">Match</label>
+			<h4>Enter a URL</h4>
+			<label for="validate-url" class="control-label">URL*</label>
+				<input type="text" class="form-control" id="url" data-ng-model="url" placeholder="URL" data-ng-change="change()">
+				{{url}}
+		</div>
+	</div>
+	<hr>
+	<h4>Details</h4>
+	<hr>
+
+			<br>
+	<div class="row">
+			<div class="col3">
+				<label for="title" class="control-label">Match</label>
+			</div>
+			<div class="col9">
 				<input type="text" class="form-control" data-ng-model="match" id="match" placeholder="match">
-			<br>
-			<hr>
-			<label for="title" class="col-md-2 control-label">Title</label>
+			</div>
+	</div>
+	<div class="row">
+			<div class="col3">
+				<label for="title" class="control-label">Title*</label>
+			</div>
+			<div class="col9">
 				<input type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
-			<br>
-			<label for="content" class="col-md-2 control-label">Content</label>
+			</div>
+	</div>
+	<br>
+	<div class="row">
+			<div class="col3">
+				<label for="content" class="control-label">Description</label>
+			</div>
+			<div class="col9">
 				<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+			</div>
+	</div>
+
 			<br>
-			<label for="title" class="col-md-2 control-label">Contains Mature Content</label>
+	</div>
+			<label for="title" class="control-label">Contains Mature Content</label>
 				<input type="checkbox" data-ng-model="nsfw">
 			<br>
+			<label for="title" class="control-label">Request Critique</label>
+				<input type="checkbox" data-ng-model="critique">
+			<br>
+			<h4>Comments</h4>
+			<hr>
+			Disable
+			deviantART (Experimental)
 		<button type="submit" class="btn-submit">Submit</button>
+		<script>
+		// Muro
+		$('#damuro-controller').damuro({
+			// Locate a sandbox to quarantine third-party javascript in.
+			sandbox:     '/views/muro.html',
+			// Set a custom loading screen message.
+			loadingText: 'Loading Muro...',
+			// Make the "click to play" splash screen have a funky colour.
+			splashCss: {
+				color: '#33a'
+			},
+			// We don't want to have deviantART muro load automatically.
+			autoload: false
+			})
+			// Bind a single-use onclick handler to open muro when they click on the splash screen.
+			.one('click', function () { 
+				$(this).damuro().open();
+				$(this).removeClass('hidden'); 
+				setTimeout( function() { $(this).addClass('visible'); }, 500);
+			})
+			// Chain down to the damuro object rather than $('#damuro-controller').
+			.damuro()
+			// Grab the Sta.sh URL for submission
+			// .complete(function (data) {
+			// 	if (data.deviationid && !/\'/.test(data.deviationid)) {
+			// 		console.log(deviationid)
+			// 	}
+			// 	else {
+			// 			
+			// 	}
+			// })
+			// The .damuro() object is a promise, so lets bind a done() and fail() handler.
+			// .gotDeviationId(function (data) {
+			// 		// saveMuro();
+			// 		if (data.deviationid && !/\'/.test(data.deviationid)) {
+			// 			console.log(data.deviationid);
+			// 		}
+			// 	})
+			.done(function (data) {
+					// saveMuro();
+					if (data.image && !/\'/.test(data.image)) {
+						// Here's where you'd save the image, we'll just set the header background as an example.
+						$('#submit').css('backgroundImage', "url('" + data.image + "')");
+						$('#submit').addClass('float-box-shadow'); 
+						console.log(data.image);
+						var imgData = JSON.stringify(getBase64Image(data.image));
+							$.ajax({
+								url: 'http://api.imgur.com/2/upload.json',
+								type: 'post',
+								headers: {
+								},
+								data: {
+									image: imgData,
+									key: "6528448c258cff474ca9701c5bab6927"
+								},
+								dataType: 'json',
+								success: function(data) {
+									console.log(data.upload.links.imgur_page);
+									document.querySelector("#uploader").className = "uploaded";
+									document.querySelector("#link").href = data.upload.links.imgur_page;
+									document.querySelector("#link span").innerHTML = data.upload.links.imgur_page;
+									document.getElementById("url").value = data.upload.links.imgur_page;
+									setTimeout( function() { $("#url").trigger("input"); }, 500);
+								},
+								error: function(data) {
+									console.log(data);
+									$('header').after('<div class="notice ng-scope">All aboard the fail whale: ' + data.error + '.</div>');
+								}
+							})
+						// And scroll to the top so you see it.
+						// $('html, body').animate({
+						//     scrollTop: $('.inner').offset().top
+						//     }, 200);
+					}
+					// And remove deviantART muro from the page.
+					$(this).removeClass('visible');
+					$(this).addClass('hidden'); 
+					$('body').removeClass('noscroll'); 
+					$(this).hide().damuro().remove();
+				})
+			.fail(function (data) {
+					$(this).hide().damuro().remove();
+					if (data.error) {
+						// Something failed in saving the image.
+						$('header').after('<div class="notice ng-scope">All aboard the fail whale: ' + data.error + '.</div>');
+					} else {
+						// The user pressed "done" without making any changes.
+						$('header').after("<div class='notice ng-scope'>By the way, you didn't draw anything.</div>");
+					}
+
+				});
+			function getBase64Image(imgElem) {
+			    // var canvas = document.createElement("canvas");
+			    // canvas.width = imgElem.clientWidth;
+			    // canvas.height = imgElem.clientHeight;
+			    // var ctx = canvas.getContext("2d");
+			    // ctx.drawImage(imgElem, 0, 0);
+			    // var dataURL = imgElem.toDataURL("image/png");
+			    return imgElem.replace(/^data:image\/(png|jpg);base64,/, "");
+			}
+			function saveMuro() {
+				$("#damuro-controller").damuro().query('image', null, function (data) {
+						if (data.image) {
+							$('#submit').css('backgroundImage', "url('" + data.image + "')");
+							$('#submit').addClass('float-box-shadow'); 
+							var imgData = JSON.stringify(getBase64Image(data.image));
+								$.ajax({
+									url: 'http://api.imgur.com/2/upload.json',
+									type: 'post',
+									headers: {
+									},
+									data: {
+										image: imgData,
+										key: "6528448c258cff474ca9701c5bab6927"
+									},
+									dataType: 'json',
+									success: function(data) {
+										console.log(data.upload.links.imgur_page);
+										document.querySelector("#uploader").className = "uploaded";
+										document.querySelector("#link").href = data.upload.links.imgur_page;
+										document.querySelector("#link span").innerHTML = data.upload.links.imgur_page;
+										document.getElementById("url").value = data.upload.links.imgur_page;
+										setTimeout( function() { $("#url").trigger("input"); }, 500);
+									},
+									error: function(data) {
+										console.log(data);
+										$('header').after('<div class="notice ng-scope">All aboard the fail whale: ' + data.error + '.</div>');
+									}
+								});
+						}
+					})
+			};
+			function openMuro() {
+				document.querySelector(".app-muro").setAttribute( "onClick", "REopenMuro();");
+				$('#damuro-controller').damuro().open();
+				$('#damuro-controller').removeClass('hidden'); 
+				$('body').addClass('noscroll'); 
+				setTimeout( function() { $('#damuro-controller').addClass('visible'); }, 500);
+			};
+			function REopenMuro() {
+				$('#damuro-controller').removeClass('hidden'); 
+				$('body').addClass('noscroll'); 
+				setTimeout( function() { $('#damuro-controller').addClass('visible'); }, 500);
+			};
+			function closeMuro(){
+				saveMuro();
+				setTimeout( function() {
+					$("#damuro-controller").addClass('saving'); 
+				}, 1000);
+					setTimeout( function() {
+						// $("#damuro-controller").damuro().remove();
+						$("#damuro-controller").removeClass('saving');
+						$("#damuro-controller").removeClass('visible');
+						$("#damuro-controller").addClass('hidden'); 
+						$("body").removeClass('noscroll');
+					}, 6500)
+			};
+			function quitMuro(){
+				$("#damuro-controller").damuro().remove();
+			};
+		// Imgur Uploader
+		window.ondragover = function(e) {e.preventDefault()}
+		window.ondrop = function(e) {e.preventDefault(); upload(e.dataTransfer.files[0]); }
+		function upload(file) {
+		
+			// https://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
+			if (!file || !file.type.match(/image.*/)) return;
+		
+			document.querySelector("#uploader").className = "uploading";
+			try {
+				var fd = new FormData(); 
+				fd.append("image", file);
+				fd.append("key", "6528448c258cff474ca9701c5bab6927");
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", "http://api.imgur.com/2/upload.json");
+				xhr.onload = function() {
+					try {
+						document.querySelector("#uploader").className = "uploaded";
+						document.querySelector("#link").href = JSON.parse(xhr.responseText).upload.links.imgur_page;
+						document.querySelector("#link span").innerHTML = JSON.parse(xhr.responseText).upload.links.imgur_page;
+						document.getElementById("url").value = JSON.parse(xhr.responseText).upload.links.imgur_page;
+						setTimeout( function() { $("#url").trigger("input"); }, 500);
+					}
+					catch(err) {
+						console.log("Error!")
+						$( "#uploader" ).append( "<div class='error'><b>ERROR:</b> " + JSON.parse(xhr.responseText).upload.links.imgur_page + ". Please reload the page and try again.</div>" );
+					}
+				}
+			}		
+			catch(err) {
+				$( "#uploader" ).append( "<div class='error'><b>ERROR:</b> " + err + ". Please reload the page and try again.</div>" );
+			}
+			xhr.send(fd);
+		}
+
+
+		</script>
 	</form>
 </section>

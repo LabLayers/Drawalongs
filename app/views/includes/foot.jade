@@ -1,3 +1,5 @@
+//TODO: Setup javascript minifier and consolidator for production releases
+
 //JQuery
 script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
 
@@ -15,6 +17,10 @@ script(type='text/javascript', src='/lib/angular-ui-utils/ui-utils.min.js')
 //AngularJS Comments
 script(type='text/javascript', src='/lib/angular-disqus/angular-disqus.js')
 
+//AngularJS Loading
+script(type='text/javascript', src='/lib/angular-animate/angular-animate.min.js')
+script(type='text/javascript', src='/lib/angular-loading-bar/src/loading-bar.js')
+
 //AngularJS Init
 script(type='text/javascript', src='/js/app.js')
 script(type='text/javascript', src='/js/config.js')
@@ -30,6 +36,10 @@ script(type='text/javascript', src='/js/controllers/articles.js')
 script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/init.js')
+
+//Extras
+script(type='text/javascript', src='/lib/jquery-deviantartmuro/jquery.deviantartmuro.js')
+script(type='text/javascript', src='/lib/pagedown/Markdown.Converter.js')
 
 if (process.env.NODE_ENV == 'development')
     //Livereload script rendered

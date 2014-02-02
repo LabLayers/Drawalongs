@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'ngDisqus']);
+angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'ngDisqus', 'chieffancypants.loadingBar', 'ngAnimate']);
 
 angular.module('mean.system', []);
 angular.module('mean.articles', []);
@@ -46,4 +46,20 @@ function profile() {
 $(document).on('click', '.bubble img', function () {
     $("body").toggleClass("bubble-zoom");
 });
+
+// Cool
+var scrollTimer = null;
+$(window).scroll(function () {
+    if (scrollTimer) {
+        clearTimeout(scrollTimer);   // clear any previous pending timer
+    }
+    scrollTimer = setTimeout(handleScroll, 20);   // set new timer
+});
+
+function handleScroll() {
+    scrollTimer = null;
+    $("body").toggleClass("viewing-content", $(document).scrollTop() >= 280);
+}
+
+
 /*ignore jslint end*/
