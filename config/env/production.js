@@ -2,7 +2,6 @@
 
 module.exports = {
     db: "mongodb://judge-miku-294:OeEvB4UuqLLXDAseIMNFSS@ds027479.mongolab.com:27479/gasket-basket-8890",
-    port: 80,
     app: {
         name: "Drawalongs"
     },
