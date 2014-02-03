@@ -74,7 +74,9 @@ walk(routes_path);
 
 // Start the app by listening on <port>
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || config.port;
-app.listen(port);
+var ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+
+app.listen(port, ip);
 console.log('Express app started on port ' + port);
 
 // Initializing logger
