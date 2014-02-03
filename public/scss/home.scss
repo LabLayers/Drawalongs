@@ -29,6 +29,7 @@ $dagreen: #b1e03e;
 @import "global/_type.scss";
 // @import "../fonts_cache/_fonts_cache.scss";
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Varela+Round);
+@import "global/_font-museosans.scss";
 
 // Prettyprint Code
 @import "global/_prettyprint-monokai.scss";
@@ -74,7 +75,7 @@ body {
 
 h1, h2, h3, h4, h5, .btn, .nav {
     font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
-    font-weight: bold;
+    font-weight: 900;
 }
 
 header, section, footer {
