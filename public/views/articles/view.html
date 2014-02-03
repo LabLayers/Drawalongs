@@ -21,12 +21,18 @@
             <a onclick="blast('canigetridofthis')" class="button border right">Nevermind</a>
         </window>
     </modal> 
-    <div>{{article.content}}</div>
-    <span>Submitted on: {{article.created | date:'medium'}}</span>
-    <span>Submitted for: {{article.match}}</span>
+    <div id="md" class="md">{{article.content}}</div>
+    <span>Posted on {{article.created | date:'medium'}}</span>
+    <span> for <a href=""></a>{{article.match}}</span>
     {{article._id}}
     <div disqus="article._id" class="box"></div>
     <script>
+    var text = document.getElementById('md').textContent;
+
+    var converter = new Showdown.converter();
+    var html = converter.makeHtml(text);
+    $('#md').html(text);
+
     $("#bubble").bind("DOMSubtreeModified", function() {
         getURL = document.getElementById('bubble').textContent;
         console.log(getURL);

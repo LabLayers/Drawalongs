@@ -1366,7 +1366,7 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
   .form-control.ng-dirty.ng-valid-url, .form-control.ng-dirty.ng-valid {
     border-bottom-color: #62bc4d; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .signin button, .signup button, .edit .apps a, .edit #uploader button, footer a.right {
   color: inherit;
   padding: 6px 8px;
   font-size: 14px;
@@ -1387,7 +1387,7 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
 .button-circle {
   border-radius: 300px; }
 
-.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .signin button, .signup button, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: 18px;
   line-height: 1.2em; }
 
@@ -2524,7 +2524,7 @@ sup {
   line-height: 1.5em;
   font-size: 120%; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .signin button, .signup button, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: inherit;
   border-radius: 6px;
   margin-right: 0.2em;
@@ -2561,20 +2561,20 @@ sup {
     box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
     background-color: #cac8ca; }
 
-.border.button-lift-ltgreen, nav menu > li a.border.submit, header a.border.devart, header a.border.github, .edit .border.btn-submit, .border.button-lift-light, .border.button, .border.button.red, .edit .apps a.border, .edit #uploader button.border, footer a.border.right {
+.border.button-lift-ltgreen, nav menu > li a.border.submit, header a.border.devart, header a.border.github, .edit .border.btn-submit, .border.button-lift-light, .border.button, .border.button.red, .signin button.border, .signup button.border, .edit .apps a.border, .edit #uploader button.border, footer a.border.right {
   border-radius: 0px;
   color: #1e98d3;
   border: 1px solid #1e98d3; }
-  .border.button-lift-ltgreen:hover, nav menu > li a.border.submit:hover, header a.border.devart:hover, header a.border.github:hover, .edit .border.btn-submit:hover, .border.button-lift-light:hover, .border.button:hover, .edit .apps a.border:hover, .edit #uploader button.border:hover, footer a.border.right:hover {
+  .border.button-lift-ltgreen:hover, nav menu > li a.border.submit:hover, header a.border.devart:hover, header a.border.github:hover, .edit .border.btn-submit:hover, .border.button-lift-light:hover, .border.button:hover, .signin button.border:hover, .signup button.border:hover, .edit .apps a.border:hover, .edit #uploader button.border:hover, footer a.border.right:hover {
     background: #1e98d3;
     color: white; }
-  .border.button-lift-ltgreen:first-of-type, nav menu > li a.border.submit:first-of-type, header a.border.devart:first-of-type, header a.border.github:first-of-type, .edit .border.btn-submit:first-of-type, .border.button-lift-light:first-of-type, .border.button:first-of-type, .edit .apps a.border:first-of-type, .edit #uploader button.border:first-of-type, footer a.border.right:first-of-type {
+  .border.button-lift-ltgreen:first-of-type, nav menu > li a.border.submit:first-of-type, header a.border.devart:first-of-type, header a.border.github:first-of-type, .edit .border.btn-submit:first-of-type, .border.button-lift-light:first-of-type, .border.button:first-of-type, .signin button.border:first-of-type, .signup button.border:first-of-type, .edit .apps a.border:first-of-type, .edit #uploader button.border:first-of-type, footer a.border.right:first-of-type {
     margin-left: 0.2em; }
-  .border.red.button-lift-ltgreen, nav menu > li a.border.red.submit, header a.border.red.devart, header a.border.red.github, .edit .border.red.btn-submit, .border.red.button-lift-light, .border.red.button, .edit .apps a.border.red, .edit #uploader button.border.red, footer a.border.red.right {
+  .border.red.button-lift-ltgreen, nav menu > li a.border.red.submit, header a.border.red.devart, header a.border.red.github, .edit .border.red.btn-submit, .border.red.button-lift-light, .border.red.button, .signin button.border.red, .signup button.border.red, .edit .apps a.border.red, .edit #uploader button.border.red, footer a.border.red.right {
     border-radius: 0px;
     color: #ee4144;
     border: 1px solid #ee4144; }
-    .border.red.button-lift-ltgreen:hover, nav menu > li a.border.red.submit:hover, header a.border.red.devart:hover, header a.border.red.github:hover, .edit .border.red.btn-submit:hover, .border.red.button-lift-light:hover, .border.red.button:hover, .edit .apps a.border.red:hover, .edit #uploader button.border.red:hover, footer a.border.red.right:hover {
+    .border.red.button-lift-ltgreen:hover, nav menu > li a.border.red.submit:hover, header a.border.red.devart:hover, header a.border.red.github:hover, .edit .border.red.btn-submit:hover, .border.red.button-lift-light:hover, .border.red.button:hover, .signin button.border.red:hover, .signup button.border.red:hover, .edit .apps a.border.red:hover, .edit #uploader button.border.red:hover, footer a.border.red.right:hover {
       background: #ee4144;
       color: white; }
 
@@ -2664,6 +2664,40 @@ header {
       display: block;
       max-height: 50px;
       width: auto; }
+
+.signin label, .signup label {
+  margin-top: 1em;
+  display: block; }
+.signin .col-md-8, .signup .col-md-8 {
+  margin-left: 0px !important; }
+.signin button, .signup button {
+  background: #62bc4d;
+  color: white;
+  transition: background-color .2s, box-shadow .1s;
+  box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: auto;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  font-weight: normal;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 2em; }
+  .signin button:hover, .signup button:hover {
+    box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 3px rgba(0, 0, 0, 0.2);
+    background-color: #89cd79; }
+  .signin button:active, .signin button:focus, .signup button:active, .signup button:focus {
+    box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #51a33d; }
+.signin .notice, .signup .notice {
+  margin: 0px -12px !important;
+  padding: 12px 12px !important; }
+  .signin .notice a, .signup .notice a {
+    border: none !important;
+    border-radius: 4px !important;
+    color: black !important; }
 
 #error pre {
   width: auto;

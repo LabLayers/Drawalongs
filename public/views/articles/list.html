@@ -1,16 +1,60 @@
 <header id="browse" data-ng-controller="ArticlesController">
     <h1>Browse</h1>
-    <p>Look around.</p>
+    <p>Discover something new.</p>
 </header>
 <section class="gallery" data-ng-controller="ArticlesController" data-ng-init="find()">
-    <input type="text" ng-model="query" placeholder="search">
-	<ul class="articles thumbs">
-		<li data-ng-repeat="article in articles | filter:query">
-			<span><span class="meta">date:</span>{{article.created | date:'medium'}}</span> /
-			<span><span class="meta">artist:</span>{{article.user.name}}</span>
-			<h2 class="title"><span class="meta">title:</span><a data-ng-href="#!/art/{{article._id}}">{{article.title}}</a></h2>
-			<div>{{article.content}}</div>
+    <input type="text" ng-model="query" placeholder="search" class="form-control">
+    <br><br>
+	<ul class="articles thumbs row">
+		<li data-ng-repeat="article in articles | filter:query" class="col4">
+			<a data-ng-href="#!/art/{{article._id}}" class="box" style="display:block">
+                <span class="thumb" id="thumb">
+                    {{article.url}}
+                </span>
+			<h5 class="title">{{article.title}}</h5><span>by {{article.user.name}}</span><br>
+            <span>for {{article.match}}</span>
+			<div></div></a>
 		</li>
 	</ul>
-	<h1 data-ng-hide="!articles || articles.length">Nothing found. <br> Why don't you <a href="/#!/submit">submit something</a>?</h1>
+    <h2 class="title">no_match</h2>
+	<p data-ng-hide="!articles || articles.length">Nothing found. <br> Why don't you <a href="/#!/submit">submit something</a>?</p>
+    <script>
+        //$("#thumb").bind("DOMSubtreeModified",
+        function reloadThumbs() {
+            getURL = document.getElementById('thumb').textContent;
+            console.log(getURL);
+            if ( getURL.indexOf('gist') !== -1 ){
+                console.log('contains gist');
+                // document.write( '\<script src="' + getURL + '.js"\>\<\/script\>' );
+            }
+            if ( getURL.indexOf('deviantart') !== -1 ){
+                console.log('contains deviantart');
+                var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+                $.getJSON(oembed_url, function(data) {
+                    console.log('Deviation by: ' + data.author_name);
+                    var divData = '<img src="' + data.url + '"/>';
+                    $('#thumb').html(divData);
+                });
+            }
+            if ( getURL.indexOf('sta.sh') !== -1 ){
+                console.log('contains sta.sh');
+                var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+                $.getJSON(oembed_url, function(data) {
+                    console.log('Deviation by: ' + data.author_name);
+                    var divData = '<img src="' + data.url + '"/>';
+                    $('#thumb').html(divData);
+                });
+            }
+            if ( getURL.indexOf('imgur') !== -1 ){
+                console.log('contains imgur');
+                var oembed_url = 'https://noembed.com/embed?url=' + getURL + '&callback=?';
+                $.getJSON(oembed_url, function(data) {
+                    var divData = '<img src="' + data.media_url + '"/>';
+                    $('#thumb').html(divData);
+                });
+            };
+        } //);
+
+$("#thumb").bind("DOMSubtreeModified",reloadThumbs());
+        </script>
 </section>

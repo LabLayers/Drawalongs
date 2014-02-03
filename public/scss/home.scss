@@ -268,6 +268,38 @@ header {
     }
 }
 
+// Signin
+.signin, .signup {
+    label {
+        margin-top: 1em; 
+        display: block;
+    }
+    .col-md-8 {
+        margin-left: 0px!important;
+    }
+    button {
+        @include button-lift($green);
+        display: block;
+        margin: auto;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        font-weight: normal;
+        width: 100%;
+        padding-left: 20px;
+        line-height: 2em;
+    }
+    .notice {
+        margin: 0px -12px!important;
+        padding: 12px 12px!important;
+        a {
+            border: none!important;
+            border-radius: 4px!important;
+            color: $black!important;
+        }
+    }
+}
+
 // Error
 #error {
     pre {
