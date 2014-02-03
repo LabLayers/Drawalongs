@@ -63,6 +63,7 @@ module.exports = function(passport) {
       },
       function(token, tokenSecret, profile, done){
         console.log(profile.username);
+        console.log(User); console.log(profile.id);
             User.findOne({
                 'deviantart.id': profile.id
             }, function(err, user) {

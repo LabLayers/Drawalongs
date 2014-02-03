@@ -719,6 +719,90 @@ noscript div, .oldie {
     -webkit-transform: scale(1);
     text-shadow: 0 0 0px red; } }
 
+@-webkit-keyframes muro-emphasis {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; }
+
+  30% {
+    transform: scale(1) rotate(-10deg);
+    -webkit-transform: scale(1) rotate(-10deg);
+    box-shadow: 0 0 5px #1e98d3; }
+
+  60% {
+    transform: scale(1) rotate(10deg);
+    -webkit-transform: scale(1) rotate(10deg);
+    box-shadow: 0 0 120px #1e98d3; }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; } }
+
+@-moz-keyframes muro-emphasis {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; }
+
+  30% {
+    transform: scale(1) rotate(-10deg);
+    -webkit-transform: scale(1) rotate(-10deg);
+    box-shadow: 0 0 5px #1e98d3; }
+
+  60% {
+    transform: scale(1) rotate(10deg);
+    -webkit-transform: scale(1) rotate(10deg);
+    box-shadow: 0 0 120px #1e98d3; }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; } }
+
+@-o-keyframes muro-emphasis {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; }
+
+  30% {
+    transform: scale(1) rotate(-10deg);
+    -webkit-transform: scale(1) rotate(-10deg);
+    box-shadow: 0 0 5px #1e98d3; }
+
+  60% {
+    transform: scale(1) rotate(10deg);
+    -webkit-transform: scale(1) rotate(10deg);
+    box-shadow: 0 0 120px #1e98d3; }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; } }
+
+@keyframes muro-emphasis {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; }
+
+  30% {
+    transform: scale(1) rotate(-10deg);
+    -webkit-transform: scale(1) rotate(-10deg);
+    box-shadow: 0 0 5px #1e98d3; }
+
+  60% {
+    transform: scale(1) rotate(10deg);
+    -webkit-transform: scale(1) rotate(10deg);
+    box-shadow: 0 0 120px #1e98d3; }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0px #1e98d3; } }
+
 @-webkit-keyframes inthetardis {
   0% {
     -webkit-transform: skew(0, 0) scale(1);
@@ -1264,14 +1348,25 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
   width: 100%;
   font-size: 1.5em;
   line-height: 1.5em;
+  min-height: 1.5em;
   padding: 0px 12px;
   background: rgba(255, 255, 255, 0.6);
   border: none;
   border-bottom: 4px solid gray;
   outline: none;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  transition: all .22s ease;
+  -webkit-transition: all .22s ease; }
+  .form-control:focus, .form-control:active {
+    background: white;
+    color: black;
+    border-bottom-color: black; }
+  .form-control.ng-valid-url, .form-control.validate:invalid, .form-control.ng-invalid {
+    border-bottom-color: #ee4144; }
+  .form-control.ng-dirty.ng-valid-url, .form-control.ng-dirty.ng-valid {
+    border-bottom-color: #62bc4d; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   color: inherit;
   padding: 6px 8px;
   font-size: 14px;
@@ -1292,7 +1387,7 @@ e(1.6) translateX(-20px);opacity:0}100%{transform:scale(1) translateX(0px);opaci
 .button-circle {
   border-radius: 300px; }
 
-.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.button-large, .button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: 18px;
   line-height: 1.2em; }
 
@@ -2388,6 +2483,8 @@ body {
   box-shadow: inset 0 60px #617867;
   background-image: url(/images/pattern-noise.png);
   width: auto;
+  overflow-x: scroll;
+  overflow-y: scroll;
   font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial; }
   body.noscroll {
     overflow-x: hidden !important;
@@ -2413,6 +2510,9 @@ header, section, footer {
 b {
   font-weight: bold; }
 
+sup {
+  color: #ee4144; }
+
 .ng-scope {
   -webkit-animation: fade-in .25s ease; }
 
@@ -2420,14 +2520,18 @@ b {
   transition: all .25s ease;
   -webkit-transition: all .25s ease; }
 
-.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
+.larger {
+  line-height: 1.5em;
+  font-size: 120%; }
+
+.button, .button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit, .button-lift-light, .button.border, .button.border.red, .edit .apps a, .edit #uploader button, footer a.right {
   font-size: inherit;
   border-radius: 6px;
   margin-right: 0.2em;
   user-select: none;
   -webkit-user-select: none; }
 
-.button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github {
+.button-lift-ltgreen, nav menu > li a.submit, header a.devart, header a.github, .edit .btn-submit {
   background: #b1e03e;
   color: white;
   transition: background-color .2s, box-shadow .1s;
@@ -2435,10 +2539,10 @@ b {
   text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
   color: #124b70;
   text-shadow: 0 1px 0 #FFF; }
-  .button-lift-ltgreen:hover, nav menu > li a.submit:hover, header a.devart:hover, header a.github:hover {
+  .button-lift-ltgreen:hover, nav menu > li a.submit:hover, header a.devart:hover, header a.github:hover, .edit .btn-submit:hover {
     box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 3px rgba(0, 0, 0, 0.2);
     background-color: #c6e873; }
-  .button-lift-ltgreen:active, nav menu > li a.submit:active, header a.devart:active, header a.github:active, .button-lift-ltgreen:focus, nav menu > li a.submit:focus, header a.devart:focus, header a.github:focus {
+  .button-lift-ltgreen:active, nav menu > li a.submit:active, header a.devart:active, header a.github:active, .edit .btn-submit:active, .button-lift-ltgreen:focus, nav menu > li a.submit:focus, header a.devart:focus, header a.github:focus, .edit .btn-submit:focus {
     box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
     background-color: #a0d322; }
 
@@ -2457,20 +2561,20 @@ b {
     box-shadow: 0px -3px rgba(0, 0, 0, 0.1) inset, 0px 0px rgba(0, 0, 0, 0.2);
     background-color: #cac8ca; }
 
-.border.button-lift-ltgreen, nav menu > li a.border.submit, header a.border.devart, header a.border.github, .border.button-lift-light, .border.button, .border.button.red, .edit .apps a.border, .edit #uploader button.border, footer a.border.right {
+.border.button-lift-ltgreen, nav menu > li a.border.submit, header a.border.devart, header a.border.github, .edit .border.btn-submit, .border.button-lift-light, .border.button, .border.button.red, .edit .apps a.border, .edit #uploader button.border, footer a.border.right {
   border-radius: 0px;
   color: #1e98d3;
   border: 1px solid #1e98d3; }
-  .border.button-lift-ltgreen:hover, nav menu > li a.border.submit:hover, header a.border.devart:hover, header a.border.github:hover, .border.button-lift-light:hover, .border.button:hover, .edit .apps a.border:hover, .edit #uploader button.border:hover, footer a.border.right:hover {
+  .border.button-lift-ltgreen:hover, nav menu > li a.border.submit:hover, header a.border.devart:hover, header a.border.github:hover, .edit .border.btn-submit:hover, .border.button-lift-light:hover, .border.button:hover, .edit .apps a.border:hover, .edit #uploader button.border:hover, footer a.border.right:hover {
     background: #1e98d3;
     color: white; }
-  .border.button-lift-ltgreen:first-of-type, nav menu > li a.border.submit:first-of-type, header a.border.devart:first-of-type, header a.border.github:first-of-type, .border.button-lift-light:first-of-type, .border.button:first-of-type, .edit .apps a.border:first-of-type, .edit #uploader button.border:first-of-type, footer a.border.right:first-of-type {
+  .border.button-lift-ltgreen:first-of-type, nav menu > li a.border.submit:first-of-type, header a.border.devart:first-of-type, header a.border.github:first-of-type, .edit .border.btn-submit:first-of-type, .border.button-lift-light:first-of-type, .border.button:first-of-type, .edit .apps a.border:first-of-type, .edit #uploader button.border:first-of-type, footer a.border.right:first-of-type {
     margin-left: 0.2em; }
-  .border.red.button-lift-ltgreen, nav menu > li a.border.red.submit, header a.border.red.devart, header a.border.red.github, .border.red.button-lift-light, .border.red.button, .edit .apps a.border.red, .edit #uploader button.border.red, footer a.border.red.right {
+  .border.red.button-lift-ltgreen, nav menu > li a.border.red.submit, header a.border.red.devart, header a.border.red.github, .edit .border.red.btn-submit, .border.red.button-lift-light, .border.red.button, .edit .apps a.border.red, .edit #uploader button.border.red, footer a.border.red.right {
     border-radius: 0px;
     color: #ee4144;
     border: 1px solid #ee4144; }
-    .border.red.button-lift-ltgreen:hover, nav menu > li a.border.red.submit:hover, header a.border.red.devart:hover, header a.border.red.github:hover, .border.red.button-lift-light:hover, .border.red.button:hover, .edit .apps a.border.red:hover, .edit #uploader button.border.red:hover, footer a.border.red.right:hover {
+    .border.red.button-lift-ltgreen:hover, nav menu > li a.border.red.submit:hover, header a.border.red.devart:hover, header a.border.red.github:hover, .edit .border.red.btn-submit:hover, .border.red.button-lift-light:hover, .border.red.button:hover, .edit .apps a.border.red:hover, .edit #uploader button.border.red:hover, footer a.border.red.right:hover {
       background: #ee4144;
       color: white; }
 
@@ -2487,6 +2591,10 @@ b {
     border-bottom: 1px solid white; }
   .border-bottom-white:focus, header a.other:focus, .notice a:focus, footer p.links a:focus, .border-bottom-white:active, header a.other:active, .notice a:active, footer p.links a:active {
     border-bottom: 3px solid white !important; }
+
+.title {
+  border-bottom: 4px solid #bbb;
+  margin-top: 0.5em; }
 
 html, body {
   height: 100%; }
@@ -2524,13 +2632,15 @@ ul.details {
     border-bottom: 1px dotted; }
 
 header {
-  background: #1e98d3;
+  background-color: #1e98d3;
   color: white;
   box-shadow: 0 2px 0 rgba(255, 255, 255, 0.8), inset 0 2px 0 rgba(50, 50, 50, 0.5), inset 0 -2px 0 rgba(50, 50, 50, 0.5); }
   header a.devart, header a.github {
     font-size: 120%;
     display: block;
-    text-align: left; }
+    text-align: left;
+    background-size: cover !important;
+    background-position: center !important; }
   header a.other {
     color: white;
     float: right; }
@@ -2538,6 +2648,8 @@ header {
     background: #be780a; }
   header#legal {
     background: #672f89; }
+  header#browse {
+    background: #62bc4d; }
   header span.avatar {
     float: left;
     vertical-align: middle;
@@ -2591,6 +2703,9 @@ header {
     margin: -0.3em 1em 0em -0.3em;
     border-radius: 6px;
     overflow: hidden; }
+  .edit .apps a.app-muro {
+    animation: muro-emphasis 1s 0.7s ease;
+    -webkit-animation: muro-emphasis 1s 0.7s ease; }
 .edit #uploader div {
   border: 10px solid black;
   text-align: center;
@@ -2600,16 +2715,26 @@ header {
   margin: auto;
   font-size: 40px;
   display: block; }
+  .edit #uploader div:active {
+    border: 10px dashed black; }
 .edit #uploader #link, .edit #uploader p, .edit #uploader div {
   display: none; }
 .edit #uploader div {
   display: inline-block; }
+.edit #uploader p {
+  text-align: center;
+  line-height: 10em;
+  text-align: center;
+  color: #ee4144;
+  animation: heartbeat 0.4s infinite;
+  -webkit-animation: heartbeat 0.4s infinite;
+  display: none; }
 .edit #uploader.uploading div {
   display: none !important; }
 .edit #uploader.uploaded div {
   display: none !important; }
 .edit #uploader.uploading p {
-  display: inline !important; }
+  display: block !important; }
 .edit #uploader.uploaded #link {
   display: inline-block !important; }
 .edit #uploader em {
@@ -2624,7 +2749,9 @@ header {
   text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
   display: block;
   margin: auto;
-  font-size: 18px; }
+  font-size: 18px;
+  border: none;
+  outline: none; }
   .edit #uploader button:hover {
     box-shadow: 0px -2px rgba(0, 0, 0, 0.1) inset, 0px 3px rgba(0, 0, 0, 0.2);
     background-color: #89cd79; }
@@ -2634,6 +2761,24 @@ header {
 .edit #uploader a {
   display: block;
   margin: 3em 0; }
+.edit .row.input .col4 {
+  text-align: right;
+  font-size: 120%;
+  line-height: 2em; }
+.edit .row.input label span {
+  font-size: 16px;
+  display: block;
+  line-height: 1.2em;
+  padding-left: 25px;
+  margin-bottom: 0.5em; }
+.edit .btn-submit {
+  border: none;
+  display: block !important;
+  margin: auto;
+  font-size: 120%;
+  outline: none;
+  width: 100%;
+  line-height: 2em; }
 
 #damuro-controller {
   position: fixed;
@@ -2661,18 +2806,18 @@ header {
     top: 9px; }
     #damuro-controller .muro-toolbar:after {
       display: none;
-      content: 'Check your thumbnail before saving!';
+      content: 'Wait for the thumbnail to render before saving!';
       position: absolute;
       top: 40px;
       color: black;
       right: 0px;
-      width: 296px;
+      width: 271px;
       font-size: 120%;
       background: rgba(0, 0, 0, 0.8);
       color: white;
-      line-height: 3em;
+      line-height: 1.2em;
       border-radius: 4px;
-      padding: 4px 2px; }
+      padding: 1em; }
     #damuro-controller .muro-toolbar:hover:after {
       display: block; }
   #damuro-controller.visible {

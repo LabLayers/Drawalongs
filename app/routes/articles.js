@@ -20,6 +20,12 @@ module.exports = function(app) {
     app.put('/articles/:articleId', authorization.requiresLogin, hasAuthorization, articles.update);
     app.del('/articles/:articleId', authorization.requiresLogin, hasAuthorization, articles.destroy);
 
+    app.get('/browse', articles.all);
+    app.post('/art', authorization.requiresLogin, articles.create);
+    app.get('/art/:articleId', articles.show);
+    app.put('/art/:articleId', authorization.requiresLogin, hasAuthorization, articles.update);
+    app.del('/art/:articleId', authorization.requiresLogin, hasAuthorization, articles.destroy);
+
     // Finish with setting up the articleId param
     app.param('articleId', articles.article);
 

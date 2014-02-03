@@ -20,30 +20,43 @@ var ArticleSchema = new Schema({
         default: 'http://no-content/',
         trim: true
     },
-    title: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    content: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    nsfw: {
-        type: Boolean,
-        default: '',
-        trim: true
-    },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
     match: {
         type: String,
         default: '',
         trim: true,
         ref: 'Match'
+    },
+    title: {
+        type: String,
+        default: 'Untitled',
+        trim: true
+    },
+    content: {
+        type: String,
+        default: '',
+        trim: false
+    },
+    tags: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    comments: {
+        type: String,
+        default: 'disqus',
+        trim: true
+    },
+    critique: {
+        type: Boolean,
+        default: false,
+    },
+    nsfw: {
+        type: Boolean,
+        default: false,
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
     }
 });
 

@@ -87,10 +87,24 @@
     width: 100%;
     font-size: 1.5em;
     line-height: 1.5em;
+    min-height: 1.5em;
     padding: 0px 12px;
     background: rgba(255,255,255,.6);
     border: none;
     border-bottom: 4px solid gray;
     outline: none;
     box-shadow: 0 0 2px rgba(0,0,0,.5);
+    transition: all .22s ease;
+    -webkit-transition: all .22s ease;
+    &:focus, &:active {
+        background: white;
+        color: black;
+        border-bottom-color: black;
+    }
+    &.ng-valid-url, &.validate:invalid, &.ng-invalid {
+        border-bottom-color: $red;
+    }
+    &.ng-dirty.ng-valid-url, &.ng-dirty.ng-valid  {
+        border-bottom-color: $green;
+    }
 }

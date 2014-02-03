@@ -13,6 +13,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             match: this.match,
             title: this.title,
             content: this.content,
+            tags: this.tags,
+            comments: this.comments,
+            critique: this.critique,
             nsfw: this.nsfw
         });
         
@@ -24,7 +27,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         this.match = '';
         this.title = '';
         this.content = '';
-        this.nsfw = false;
+        this.tags = '';
+        this.comments = '';
+        this.critique = '';
+        this.nsfw = '';
 
     };
 

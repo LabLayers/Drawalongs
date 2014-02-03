@@ -63,6 +63,8 @@ body {
     background-image: url(/images/pattern-noise.png);    
     width: auto;
     // font-size: 20px;
+    overflow-x: scroll;
+    overflow-y: scroll;
     font-family: "Museo Sans", "Proxima Nova", ProximaSoft, Montserrat, Arial;
     &.noscroll {
         overflow-x: hidden!important;
@@ -92,6 +94,10 @@ b {
     font-weight: bold;
 }
 
+sup {
+    color: $red;
+}
+
 .ng-scope {
     -webkit-animation: fade-in .25s ease;
 }
@@ -99,6 +105,11 @@ b {
 .transition {
     transition: all .25s ease;
     -webkit-transition: all .25s ease;
+}
+
+.larger {
+    line-height: 1.5em;
+    font-size: 120%;
 }
 
 .button {
@@ -153,6 +164,11 @@ b {
     }
 }
 
+.title {
+    border-bottom: 4px solid #bbb;
+    margin-top: 0.5em;
+}
+
 // Sticky Footer
 // -@ http://ryanfait.com/html5-sticky-footer/layout.css
 
@@ -204,7 +220,7 @@ ul.details {
 // Header
 header {
     // background: #506256;
-    background: $blue;
+    background-color: $blue;
     color: $white;
     // color: #D8E4D8;
     box-shadow: 0 2px 0 rgba(255,255,255,0.8), 
@@ -216,6 +232,8 @@ header {
         font-size: 120%;
         display: block;
         text-align: left;
+        background-size: cover!important;
+        background-position: center!important;
     }
     a.other {
         color: white;
@@ -227,6 +245,9 @@ header {
     }
     &#legal {
         background: $purple;
+    }
+    &#browse {
+        background: $green;
     }
     @extend .dark-text-shadow;
     span.avatar {
@@ -288,6 +309,10 @@ header {
             border-radius: 6px;
             overflow: hidden;
         }
+        &.app-muro {
+            animation: muro-emphasis 1s 0.7s ease;
+            -webkit-animation: muro-emphasis 1s 0.7s ease;
+        }
     }
     #uploader {
         div {
@@ -295,12 +320,24 @@ header {
             line-height: 1.5em;
             width: 100%; margin: auto; font-size: 40px;
             display: block;
+            &:active {
+                border: 10px dashed black;
+            }
         }
         #link, p , div {display: none}
         div {display: inline-block;}
+        p {
+            text-align: center;
+            line-height: 10em;
+            text-align: center;
+            color: $red;
+            animation: heartbeat 0.4s infinite;
+            -webkit-animation: heartbeat 0.4s infinite;
+            display: none;
+        }
         &.uploading div {display: none!important}
         &.uploaded div {display: none!important}
-        &.uploading p {display: inline!important}
+        &.uploading p {display: block!important;}
         &.uploaded #link {display: inline-block!important;}
         em {position: absolute; bottom: 0; right: 0}
         button {
@@ -308,11 +345,39 @@ header {
             display: block;
             margin: auto;
             font-size: 18px;
+            border: none;
+            outline: none;
         }
         a {
             display: block;
             margin: 3em 0;
         }
+    }
+    .row.input {
+        .col4 {
+            text-align: right;
+            font-size: 120%;
+            line-height: 2em;
+        }
+        label {
+            span {
+                font-size: 16px;
+                display: block;
+                line-height: 1.2em;
+                padding-left: 25px;
+                margin-bottom: 0.5em;
+            }
+        }
+    }
+    .btn-submit {
+        @extend .button-lift-ltgreen;
+        border: none;
+        display: block!important;
+        margin: auto;
+        font-size: 120%;
+        outline: none;
+        width: 100%;
+        line-height: 2em;
     }
 }
 
@@ -343,18 +408,18 @@ header {
         top: 9px;
         &:after {
             display: none;
-            content:'Check your thumbnail before saving!';
+            content:'Wait for the thumbnail to render before saving!';
             position: absolute;
             top: 40px;
             color: black;
             right: 0px;
-            width:296px;
+            width: 271px;
             font-size: 120%;
             background: rgba(0,0,0,.8);
             color: white;
-            line-height: 3em;
+            line-height: 1.2em;
             border-radius: 4px;
-            padding: 4px 2px;
+            padding: 1em;
         }
         &:hover:after {
             display: block;

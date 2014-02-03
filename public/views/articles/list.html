@@ -1,4 +1,4 @@
-<header id="profile" data-ng-controller="ArticlesController">
+<header id="browse" data-ng-controller="ArticlesController">
     <h1>Browse</h1>
     <p>Look around.</p>
 </header>
@@ -8,7 +8,7 @@
 		<li data-ng-repeat="article in articles | filter:query">
 			<span><span class="meta">date:</span>{{article.created | date:'medium'}}</span> /
 			<span><span class="meta">artist:</span>{{article.user.name}}</span>
-			<h2><span class="meta">title:</span><a data-ng-href="#!/art/{{article._id}}">{{article.title}}</a></h2>
+			<h2 class="title"><span class="meta">title:</span><a data-ng-href="#!/art/{{article._id}}">{{article.title}}</a></h2>
 			<div>{{article.content}}</div>
 		</li>
 	</ul>

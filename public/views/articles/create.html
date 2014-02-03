@@ -2,12 +2,16 @@
 	<h1>Submit</h1>
 	<p>Share your ideas with the world.</p>
 </header>
+<div class="notice" data-ng-controller="HeaderController" data-ng-hide="global.authenticated">
+      <b>Note:</b> You must <a href="/signin">sign in</a> to post to Drawalongs, but feel free to play around with the upload tools.
+</div>
 <div id="damuro-controller" class="hidden">
 	<div class="muro-toolbar" onclick="closeMuro();">Save to Imgur</div>
 	<div class="muro-save">Saving...</div>
 </div>
 <section class="edit edit-new" data-ng-controller="ArticlesController">
 <form role="form" data-ng-submit="create()">
+	<h2 class="title">Upload</h2>
 	<div class="row apps">
 		<div class="col4 hidden-mobile">
 			<h4>Start Drawing</h4>
@@ -50,58 +54,121 @@
 					<span>View on Imgur</span>
 				</a>
 			</div>
-			<br>
 			<h4>Enter a URL</h4>
-			<label for="validate-url" class="control-label">URL*</label>
-				<input type="text" class="form-control" id="url" data-ng-model="url" placeholder="URL" data-ng-change="change()">
-				{{url}}
+			<label for="validate-url" class="control-label">URL<sup>*</sup></label>
+				<input type="url" class="form-control" id="url" data-ng-model="url" placeholder="URL" data-ng-change="change()">
+				<p ng-if="!url">
+					<b>Accepted links:</b> deviantart.com, sta.sh, imgur.com, gist.github.com
+				</p>
+				<p ng-if="url">
+					{{url}}
+				</p>
 		</div>
 	</div>
-	<hr>
-	<h4>Details</h4>
-	<hr>
-
+	<br>
+	<br>
+	<h2 class="title">Details</h2>
 			<br>
-	<div class="row">
-			<div class="col3">
+	<div class="row input">
+			<div class="col4">
 				<label for="title" class="control-label">Match</label>
 			</div>
-			<div class="col9">
-				<input type="text" class="form-control" data-ng-model="match" id="match" placeholder="match">
+			<div class="col8">
+				<input type="text" class="form-control validate" data-ng-model="match" id="match" placeholder="Match">
 			</div>
 	</div>
-	<div class="row">
-			<div class="col3">
-				<label for="title" class="control-label">Title*</label>
+	<div class="row input">
+			<div class="col4">
+				<label for="title" class="control-label">Title<sup>*</sup></label>
 			</div>
-			<div class="col9">
-				<input type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
+			<div class="col8">
+				<input type="text" class="form-control validate" data-ng-model="title" id="title" placeholder="Untitled" required>
 			</div>
 	</div>
 	<br>
-	<div class="row">
-			<div class="col3">
-				<label for="content" class="control-label">Description</label>
+		<div class="row input">
+			<div class="col4">
+				<label for="content" class="control-label">
+					Description<br>
+					<small><a href="http://daringfireball.net/projects/markdown/syntax" tabindex="-1">markdown supported</a></small>
+				</label>
 			</div>
-			<div class="col9">
-				<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+			<div class="col8">
+				<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control validate"></textarea>
 			</div>
+		</div>
+	<br>
+		<div class="row input">
+			<div class="col4">
+				<label for="content" class="control-label">
+					Tags<br>
+				</label>
+			</div>
+			<div class="col8">
+				<input type="text" class="form-control validate" data-ng-model="tags" id="tags" placeholder="Space-seperated">
+			</div>
+		</div>
 	</div>
-
 			<br>
-	</div>
-			<label for="title" class="control-label">Contains Mature Content</label>
-				<input type="checkbox" data-ng-model="nsfw">
 			<br>
-			<label for="title" class="control-label">Request Critique</label>
-				<input type="checkbox" data-ng-model="critique">
+			<h2 class="title">Comments</h2>
 			<br>
-			<h4>Comments</h4>
-			<hr>
-			Disable
-			deviantART (Experimental)
-		<button type="submit" class="btn-submit">Submit</button>
+			<div class="row input">
+				<div class="col4 larger" style="line-height: 1.5em;">
+					Commenting System<sup>*</sup>
+				</div>
+				<div class="col8 larger">
+					<input type="radio" data-ng-model="comments" value="disqus" id="disqus" checked="checked">
+					<label for="disqus">Disqus
+						<span>Public commenting system that will allow anyone to comment. Replies will appear in your e-mail.</span></label>
+					<input type="radio"data-ng-model="comments" value="da" id="da">
+					<label for="da">deviantART (Experimental)
+						<span>Closed commenting system that will allow members of deviantART to comment. A bot will start a comment thread on deviantART. Replies will appear in your Message Center.</span></label>
+					<input type="radio" data-ng-model="comments" value="native" id="native" disabled>
+					<label for="native" style="opacity: 0.5">Native (Coming Soon!)
+						<span>Closed commenting system that will allow Drawalongs members to comment. Replies will appear in you e-mail (assuming that I haven't yet hit the Sendgrid limit.)</span></label>
+					<input type="radio" data-ng-model="comments" value="disabled" id="disabled">
+					<label for="disabled">Disable Comments
+						<span>Turn off comments for everyone.</span></label>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="row input">
+				<div class="col4 larger" style="line-height: 1.5em;">
+					Critique Settigs
+				</div>
+				<div class="col8 larger">
+					<input type="checkbox" data-ng-model="critique" id="critique">
+					<label for="critique" class="control-label">Request Critique
+					<span>Request valuable insight on how to improve your technique.</span></label>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="row input">
+				<div class="col4 larger" style="line-height: 1.5em;">
+					Ready?
+				</div>
+				<div class="col8 larger">
+					<label>
+						<span style="text-align: center;">By submitting, you agree that you are submitting original work that is relatively SFW.</span>
+					</label>
+					<button type="submit" class="btn-submit" onclick="$('html, body').animate({ scrollTop: 0 }, 600);">Submit</button>
+				</div>
+			</div>
 		<script>
+		$(document).ready( function () {
+		    $('input').each( function () {
+		        $this = $(this);
+		        if ( this.value != '' ) $this.addClass('valid');        
+		    });
+		    $('textarea').each( function () {
+		        $this = $(this);
+		        if ( this.value != '' ) $this.addClass('valid');        
+		    });
+
+		});
 		// Muro
 		$('#damuro-controller').damuro({
 			// Locate a sandbox to quarantine third-party javascript in.
@@ -143,8 +210,6 @@
 					// saveMuro();
 					if (data.image && !/\'/.test(data.image)) {
 						// Here's where you'd save the image, we'll just set the header background as an example.
-						$('#submit').css('backgroundImage', "url('" + data.image + "')");
-						$('#submit').addClass('float-box-shadow'); 
 						console.log(data.image);
 						var imgData = JSON.stringify(getBase64Image(data.image));
 							$.ajax({
@@ -164,6 +229,8 @@
 									document.querySelector("#link span").innerHTML = data.upload.links.imgur_page;
 									document.getElementById("url").value = data.upload.links.imgur_page;
 									setTimeout( function() { $("#url").trigger("input"); }, 500);
+									$('#submit').css('backgroundImage', "url('" + data.upload.links.imgur_page + ".png')");
+									$('#submit').addClass('float-text-shadow'); 
 								},
 								error: function(data) {
 									console.log(data);
@@ -204,8 +271,6 @@
 			function saveMuro() {
 				$("#damuro-controller").damuro().query('image', null, function (data) {
 						if (data.image) {
-							$('#submit').css('backgroundImage', "url('" + data.image + "')");
-							$('#submit').addClass('float-box-shadow'); 
 							var imgData = JSON.stringify(getBase64Image(data.image));
 								$.ajax({
 									url: 'http://api.imgur.com/2/upload.json',
@@ -224,6 +289,8 @@
 										document.querySelector("#link span").innerHTML = data.upload.links.imgur_page;
 										document.getElementById("url").value = data.upload.links.imgur_page;
 										setTimeout( function() { $("#url").trigger("input"); }, 500);
+										$('#submit').css('backgroundImage', "url('" + data.upload.links.imgur_page + ".png')");
+										$('#submit').addClass('float-text-shadow'); 
 									},
 									error: function(data) {
 										console.log(data);
@@ -268,11 +335,13 @@
 		
 			// https://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
 			if (!file || !file.type.match(/image.*/)) return;
-		
+
 			document.querySelector("#uploader").className = "uploading";
 			try {
 				var fd = new FormData(); 
 				fd.append("image", file);
+				$('#submit').css('backgroundImage', "url('" + file + "')");
+				$('#submit').addClass('float-text-shadow'); 
 				fd.append("key", "6528448c258cff474ca9701c5bab6927");
 				var xhr = new XMLHttpRequest();
 				xhr.open("POST", "http://api.imgur.com/2/upload.json");
@@ -283,7 +352,10 @@
 						document.querySelector("#link span").innerHTML = JSON.parse(xhr.responseText).upload.links.imgur_page;
 						document.getElementById("url").value = JSON.parse(xhr.responseText).upload.links.imgur_page;
 						setTimeout( function() { $("#url").trigger("input"); }, 500);
+						$('#submit').css('backgroundImage', "url('" + JSON.parse(xhr.responseText).upload.links.imgur_page + ".png')");
+						$('#submit').addClass('float-text-shadow'); 
 					}
+					// Errors
 					catch(err) {
 						console.log("Error!")
 						$( "#uploader" ).append( "<div class='error'><b>ERROR:</b> " + JSON.parse(xhr.responseText).upload.links.imgur_page + ". Please reload the page and try again.</div>" );

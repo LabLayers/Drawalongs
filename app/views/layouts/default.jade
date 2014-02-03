@@ -5,10 +5,9 @@ html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.face
     span#top
     nav(data-ng-include="'views/header.html'", data-role="navigation")
       menu
-        li.logo
+        li.logo.left
           a Drawalongs
-        li
-          a Loading...
+          span(style="color:white;margin-left:1.5em") Loading...
         // li
           a Trains
             span 8
@@ -23,6 +22,6 @@ html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.face
           li.right
             a Sign In
         li.right
-          a Submit
+          a.submit Submit
     block content
     include ../includes/foot

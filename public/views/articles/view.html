@@ -1,6 +1,6 @@
 <section class="view" data-ng-controller="ArticlesController" data-ng-init="findOne()">
     <div class="bubble" id="bubble"><a href="{{article.url}}">{{article.url}}</a></div>
-    <h2>{{article.title}}</h2>
+    <h2 class="title">{{article.title}}</h2>
     <span>by <a href="/#!/browse/?search={{article.user.name}}">{{article.user.name}}</a></span>
     <div data-ng-show="global.user._id == article.user._id" class="box">
         <a class="button-lift-light" href="/#!/art/{{article._id}}/edit">

@@ -2,12 +2,12 @@ extends auth
 
 block auth
   h2 Sign Up
+  p.notice Welcome to Drawalongs! Whatever you do, please do not use a password from another site, but be sure to keep it memorable because you won't be able to change it later on (yet!)
   form.signup.form-horizontal(action="/users", method="post")
     .form-group
-      label.col-md-4.control-label(for='name') Full Name
+      label.col-md-4.control-label(for='name') Display Name
       .col-md-8
-        input#name.form-control(type='text', name="name", placeholder='Full name', value=user.name)
-
+        input#name.form-control(type='text', name="name", placeholder='Display name', value=user.name)
     .form-group
       label.col-md-4.control-label(for='email') Email
       .col-md-8
@@ -22,6 +22,11 @@ block auth
       label.col-md-4.control-label(for='password') Password
       .col-md-8
         input#password.form-control(type='password', name="password", placeholder='Password')
+
+    .form-group
+      label.col-md-4.control-label(for='erm') What is the color of the sky?
+      .col-md-8
+        input#password.form-control(type='text', name="erm", placeholder='Are you human?')
 
     .form-group
       .col-md-offset-4.col-md-8
