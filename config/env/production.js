@@ -1,28 +1,34 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://localhost/mean",
+    db: "mongodb://apple-the-pie-952:edefAKJOBIraet@ds027519.mongolab.com:27519/coder-the-coder-200",
+    port: 80,
     app: {
-        name: "MEAN - A Modern Stack - Production"
+        name: "Drawalongs"
+    },
+    deviantart: {
+        clientID: "60",
+        clientSecret: "be6c2e6ea6855630cada48a6a8ec405f",
+        callbackURL: "http://drawalongs.com/auth/deviantart/callback"
     },
     facebook: {
         clientID: "APP_ID",
         clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        callbackURL: "http://drawalongs.com/auth/facebook/callback"
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
+        clientID: "6bo9xdyNsWO36tILRC9a5g",
+        clientSecret: "VdJ96Z54beb6arUZncp58JrgUS0dEurSsfVzKp1Apiw",
+        callbackURL: "http://drawalongs.com/auth/twitter/callback"
     },
     github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        clientID: "0afb104595be661ef62d",
+        clientSecret: "f582d653f8855ea542dec7d23fa95c34f866d7ec",
+        callbackURL: "http://drawalongs.com/auth/github/callback"
     },
     google: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        clientID: "782868735274-7e3rue8se1vrik08lluto6a7qn1jf2aq",
+        clientSecret: "N7Qke22sZ4RIjr6wKizXDjf6",
+        callbackURL: "http://drawalongs.com/auth/google/callback"
     }
 }
