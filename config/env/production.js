@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://apple-the-pie-952:edefAKJOBIraet@ds027519.mongolab.com:27519/coder-the-coder-200",
-    port: 80,
+    db: "mongodb://judge-miku-294:OeEvB4UuqLLXDAseIMNFSS@ds027479.mongolab.com:27479/gasket-basket-8890",
     app: {
         name: "Drawalongs"
     },
