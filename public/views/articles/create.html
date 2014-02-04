@@ -5,9 +5,13 @@
 <div class="notice" data-ng-controller="HeaderController" data-ng-hide="global.authenticated">
       <b>Note:</b> You must <a href="/signin">sign in</a> to post to Drawalongs, but feel free to play around with the upload tools.
 </div>
+<div class="notice" data-ng-controller="HeaderController">
+      <b>Note:</b> No deviantART account is required to use Muro - just draw and click "Upload" when finished.
+</div>
+
 <div id="damuro-controller" class="hidden">
-	<div class="muro-toolbar" onclick="closeMuro();">Save to Imgur</div>
-	<div class="muro-save">Saving...</div>
+	<div class="muro-toolbar" onclick="closeMuro();">Save &amp; Upload</div>
+	<div class="muro-save">Saving to Drawalongs...</div>
 </div>
 <section class="edit edit-new" data-ng-controller="ArticlesController">
 <form role="form" data-ng-submit="create()">

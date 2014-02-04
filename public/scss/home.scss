@@ -78,6 +78,18 @@ h1, h2, h3, h4, h5, .btn, .nav {
     font-weight: 900;
 }
 
+a {
+    color: #359650;
+}
+
+em {
+    font-style: italic;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
 header, section, footer {
     position: relatve; width: 100%; overflow: hidden;
     padding: 0px;
@@ -135,6 +147,14 @@ sup {
     text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 
+.button-edit {
+    @include button-lift($blue);
+}
+
+.button-delete {
+    @include button-lift($red);
+}
+
 .button.border {
     @include button-border($blue);
     &:first-of-type {
@@ -168,6 +188,33 @@ sup {
 .title {
     border-bottom: 4px solid #bbb;
     margin-top: 0.5em;
+}
+
+// Markdown 
+.md {
+    h1 {
+        font-size: 38px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 26px;
+    }
+    p {
+        margin-bottom : 1em;
+    }
+}
+
+// Gist
+.gist {
+    pre {
+        color: inherit;
+        border-radius: 0px;
+        background: inherit;
+        box-shadow: none;
+        white-space: normal!important; 
+    }
 }
 
 // Sticky Footer
@@ -321,6 +368,59 @@ header {
     }
 }
 
+// Browse
+.gallery {
+    ul.thumbs {
+        li:nth-child(3n+1) {
+            margin-left: 0px!important;
+        }
+        li {
+            a.box {
+                color: $dark;
+                margin-bottom: 1em;
+                transition: all 0.15s ease-in-out;
+                -webkit-transition: all 0.15s ease-in-out;
+                &:hover {
+                    transform: translateY(-5px);
+                    -webkit-transform: translateY(-5px);
+
+                }
+                #thumb {
+                    display: block;
+                    overflow: hidden;
+                    height: 5em;
+                    background: $dark;
+                    .thumb {
+                        max-width: 100%;
+                    }
+                    &:after {
+                        color: white;
+                        content: 'thumbnailEngine failed';
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Tags
+h2 small {
+    font-weight: normal;
+    font-size: 35%;
+    padding: 6px;
+    vertical-align: middle;
+
+    #tag {
+        #tag {
+            padding: 2px 6px;
+            margin: 2px;
+            background: $orange;
+            color: white;
+            border-radius: 6px;
+        }
+    }
+}
+
 // Submit
 .edit {
     .apps a {
@@ -441,7 +541,7 @@ header {
         top: 9px;
         &:after {
             display: none;
-            content:'Wait for the thumbnail to render before saving!';
+            content:'Wait for the thumbnail to finish rendering before saving!';
             position: absolute;
             top: 40px;
             color: black;

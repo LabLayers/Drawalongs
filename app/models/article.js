@@ -21,9 +21,7 @@ var ArticleSchema = new Schema({
         trim: true
     },
     match: {
-        type: String,
-        default: '',
-        trim: true,
+        type: Schema.ObjectId,
         ref: 'Match'
     },
     title: {

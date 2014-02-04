@@ -47,7 +47,7 @@ $(document).on('click', '.bubble img', function () {
     $("body").toggleClass("bubble-zoom");
 });
 
-// Cool
+// Scroll Timeouts
 var scrollTimer = null;
 $(window).scroll(function () {
     if (scrollTimer) {
@@ -61,6 +61,13 @@ function handleScroll() {
     $("body").toggleClass("viewing-content", $(document).scrollTop() >= 280);
 }
 
+// Tags
+function tagger() {
+  var tagize = document.getElementById('tag').textContent;
+  var tagize = tagize.replace(/ /g,"</span><span id='tag'>")
+  $('#tag').html(tagize);
+}
+
 // Google Analytics
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -69,5 +76,17 @@ function handleScroll() {
 
   ga('create', 'UA-47722829-1', 'drawalongs.com');
   ga('send', 'pageview');
+
+// Markdown
+function md() {
+    getDATA = document.getElementById('md').textContent;
+    console.log(getDATA);
+    console.log("markdown triggered");
+    var converter = new Showdown.converter();
+    var text = document.getElementById('md').textContent;
+    markdown = converter.makeHtml(text);
+    $('#md').html(markdown);
+    console.log(markdown);
+};
 
 /*ignore jslint end*/
