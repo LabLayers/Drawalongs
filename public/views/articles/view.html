@@ -49,7 +49,16 @@
     </div>
     <script>
     // $("#md").bind("DOMSubtreeModified", function() {
-    setTimeout( function() { md() }, 700);
+    setTimeout( function() { 
+        getDATA = document.getElementById('md').textContent;
+        console.log(getDATA);
+        console.log("markdown triggered");
+        var converter = new Showdown.converter();
+        var text = document.getElementById('md').textContent;
+        markdown = converter.makeHtml(text);
+        $('#md').html(markdown);
+        console.log(markdown);
+    }, 700);
     setTimeout( function() { tagger() }, 700);
     $("#bubble").bind("DOMSubtreeModified", function() {
         getURL = document.getElementById('bubble').textContent;

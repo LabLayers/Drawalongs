@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://apple-the-pie-952:edefAKJOBIraet@ds027519.mongolab.com:27519/coder-the-coder-200",
+    db: "mongodb://judge-miku-294:OeEvB4UuqLLXDAseIMNFSS@ds027479.mongolab.com:27479/gasket-basket-8890",
     port: 3001,
     app: {
         name: "Drawalongs"
@@ -22,8 +22,8 @@ module.exports = {
         callbackURL: "http://localhost:3000/auth/twitter/callback"
     },
     github: {
-        clientID: "f615c861e4888633d7de",
-        clientSecret: "92151fedac5cf062ab0ec862c958b9e5a0a54e13",
+        clientID: "0afb104595be661ef62d",
+        clientSecret: "f582d653f8855ea542dec7d23fa95c34f866d7ec",
         callbackURL: "http://localhost:3000/auth/github/callback"
     },
     google: {
