@@ -65,7 +65,7 @@ module.exports = function(passport) {
         console.log(profile.username);
         console.log(User); console.log(profile.id);
             User.findOne({
-                'deviantart.id': profile.id
+                'username': profile.id
             }, function(err, user) {
                 if (!user) {
                     user = new User({
@@ -73,7 +73,7 @@ module.exports = function(passport) {
                         username: profile.username,
                         avatar: profile.avatar,
                         provider: 'deviantart',
-                        deviantart: profile._json
+                        deviantart: profile
                     });
                     user.save(function(err) {
                         if (err) console.log(err);

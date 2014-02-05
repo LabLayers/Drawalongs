@@ -3,7 +3,7 @@
     <p>Discover something new.</p>
 </header>
 <section class="gallery" data-ng-controller="ArticlesController" data-ng-init="find()">
-    <input type="text" ng-model="query" placeholder="search" class="form-control">
+    <input type="text" ng-model="query" placeholder="search" class="form-control" autofocus>
     <br><br>
 	<ul class="articles thumbs row">
 		<li data-ng-repeat="article in articles | filter:query" class="col4">
