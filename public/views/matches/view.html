@@ -1,14 +1,172 @@
 <section class="view" data-ng-controller="MatchesController" data-ng-init="findOne()">
-    <span>{{article.created | date:'medium'}}</span>/
-    <span>{{article.user.name}}</span>
-    <h2 class="title">{{article.title}}</h2>
-    <div data-ng-show="global.user._id == article.user._id">
-        <a class="btn" href="/#!/articles/{{article._id}}/edit">
-        	<i class="icon-pencil"></i> Pencil
+    <div class="bubble" id="bubble"><a href="{{match.url}}">{{match.url}}</a></div>
+    <h2 class="title">{{match.title}} <small data-ng-show="match.tags" class="right"><span id="tag">Tags: {{match.tags}}</span></small></h2>
+    <div data-ng-show="global.user._id == match.user._id" class="right">
+        <a class="button-edit" href="/#!/art/{{match._id}}/edit">
+            <i class="icon-edit"></i> Edit Entry
         </a> 
-        <a class="btn" data-ng-click="remove();">
-            <i class="icon-"></i> Remove
+        <a class="button-delete" onclick="launch('canigetridofthis')">
+            <i class="icon-close"></i> Delete
         </a>
     </div>
-    <div>{{article.content}}</div>
+    <span><i class="icon-emo-laugh"></i>&nbsp; by <a href="/#!/browse/?search={{match.user.name}}">{{match.user.name}}</a></span>
+    <br>
+    <span><i class="icon-muffin"></i> on {{match.created | date:'medium'}}</span>
+    <modal data-ng-show="global.user._id == match.user._id" id="canigetridofthis" style="display: none;" class="hidden">
+        <window>
+            <h1>Delete Confirmation <a onclick="blast('canigetridofthis')" class="right"><i class="icon-close"></i></a></h1>
+            <div class="content">
+                <p>Are you sure that you want to delete "{{match.title}}", along with all its comments?</p>
+            </div>
+            <hr>
+            <a data-ng-click="remove();" class="button border red right">Let's Do It!</a>
+            <a onclick="blast('canigetridofthis')" class="button border right">Nevermind</a>
+        </window>
+    </modal> 
+    <br>
+    <br>
+    <div class="box">
+        <span><i class="icon-mouse"></i> for Match <a href="#!/match/{{match.match._id}}" button-lift-green>{{match.match.name}}</a>
+            <br>
+            Browse more in this match:
+            <ul>
+                <li data-ng-repeat="match in match.match | filter:query" class="col4">
+                </li>
+            </ul>
+        </span>
+
+    </div>
+    <br>
+    <br>
+    <div id="md" class="md">{{match.content}}</div>
+    <br>
+    <div class="comments">
+        <div disqus="match._id" class="box" data-ng-show="match.comments == 'disqus'"></div>
+        <div data-ng-show="match.comments == 'disabled'" style="text-align:center;padding: 2em;" class="box">Comments are disabled.</div>
+        <div data-ng-show="match.comments == 'da'">
+            <iframe src="http://comments.deviantart.com/4/30028162/1#gmi-CCommentMaster" frameborder="0" class="box hidden-mobile" height="500" style="width:100%" data-ag-comment="{{match._id}}"></iframe>
+        </div>
+    </div>
+    <script>
+    
+    // $("#md").bind("DOMSubtreeModified", function() {
+    setTimeout( function() { 
+        getDATA = document.getElementById('md').textContent;
+        console.log(getDATA);
+        console.log("markdown triggered");
+        var converter = new Showdown.converter();
+        var text = document.getElementById('md').textContent;
+        markdown = converter.makeHtml(text);
+        $('#md').html(markdown);
+        console.log(markdown);
+    }, 700);
+    setTimeout( function() { tagger() }, 700);
+    $("#bubble").bind("DOMSubtreeModified", function() {
+        getURL = document.getElementById('bubble').textContent;
+        console.log(getURL);
+        if ( getURL.indexOf('gist') !== -1 ){
+            console.log('contains gist');
+            // document.write( '<div class="gist-sandbox">\<script src="' + getURL + '.js"\>\<\/script\><\/div>' );
+
+            var id = getURL.substr(getURL.lastIndexOf('/') + 1)
+            var divData = '<div class="gist" data-gist="' + id + '" data-file=""><a href="' + getURL + '">' + getURL + '</a></div>';
+            $('#bubble').html(divData);
+
+            // Alt
+            (function() {
+              $(function() {
+                var GIST_HOST, code, elements, gists, stylesheets;
+                GIST_HOST = 'https://gist.github.com';
+                elements = $('div[data-gist]');
+                gists = {};
+                code = [];
+                stylesheets = [];
+                elements.addClass('loading');
+                elements.each(function(index, element) {
+                  var gist;
+                  element = $(element);
+                  gist = element.data('gist');
+                  if (gists[gist] == null) {
+                    gists[gist] = {
+                      targets: []
+                    };
+                  }
+                  return gists[gist].targets.push(element);
+                });
+                return $.each(gists, function(id, data) {
+                  return $.getJSON("" + GIST_HOST + "/" + id + ".json?callback=?", function(data) {
+                    var div, gist, stylesheet;
+                    gist = gists[id];
+                    gist.data = data;
+                    stylesheet = gist.data.stylesheet;
+                    if (stylesheets.indexOf(stylesheet) < 0) {
+                      stylesheets.push(stylesheet);
+                      Modernizr.load(GIST_HOST + stylesheet);
+                    }
+                    div = gist.data.div;
+                    gist.files = $(div).find('.gist-file');
+                    gist.outer = $(div).first().html('');
+                    return $(gist.targets).each(function(index, target) {
+                      var file, inner, outer;
+                      file = target.data('gist-file');
+                      if (file) {
+                        outer = gist.outer.clone();
+                        inner = "<div class=\"gist-file\">" + $(gist.files.get(gist.data.files.indexOf(file))).html() + "</div>";
+                        outer.html(inner);
+                      } else {
+                        outer = $(div);
+                      }
+                      outer.hide();
+                      return target.fadeOut('fast', function() {
+                        $(this).replaceWith(outer);
+                        return outer.fadeIn();
+                      });
+                    });
+                  });
+                });
+              });
+
+            }).call(this);
+
+        }
+        if ( getURL.indexOf('deviantart') !== -1 ){
+            console.log('contains deviantart');
+            var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                console.log('Deviation by: ' + data.author_name);
+                var divData = '<img src="' + data.url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+        if ( getURL.indexOf('sta.sh') !== -1 ){
+            console.log('contains sta.sh');
+            var oembed_url = 'https://backend.deviantart.com/oembed?url=' + getURL + '&format=jsonp&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                console.log('Deviation by: ' + data.author_name);
+                var divData = '<img src="' + data.url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+        if ( getURL.indexOf('imgur') !== -1 ){
+            console.log('contains imgur');
+            var oembed_url = 'https://noembed.com/embed?url=' + getURL + '&callback=?';
+            $.getJSON(oembed_url, function(data) {
+                var divData = '<img src="' + data.media_url + '"/>';
+                $('#bubble').html(divData);
+            });
+        };
+
+        // if ( getURL.indexOf('imgur') == -1 ) {
+        //     console.log('contains no content');
+        //         var divData = '<br><a href="getURL">getURL</a>';
+        //         $('#bubble').html(divData);
+        // };
+        // if( getURL.indexOf('gist') >= 0){
+        //   // Found world d
+        //     $( "#bubble" ).append( "<p>Test</p>" );
+        // } else {
+        //     $( "#bubble" ).append( "<p>Test</p>" );
+        // }
+    });
+    </script>
 </section>

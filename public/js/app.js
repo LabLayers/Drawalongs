@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'ngDisqus', 'chieffancypants.loadingBar', 'ngAnimate']);
+angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'mean.matches', 'ngDisqus', 'chieffancypants.loadingBar', 'ngAnimate']);
 
 angular.module('mean.system', []);
 angular.module('mean.articles', []);
+angular.module('mean.matches', []);
 
 /*ignore jslint start*/
 $.get( '/quote', function( data ) {

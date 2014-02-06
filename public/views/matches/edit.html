@@ -1,21 +1,98 @@
-<section class="submit edit" data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<form class="form-horizontal col-md-6" role="form" data-ng-submit="update()">
-		<div class="form-group">
-			<label for="title" class="control-label">Title</label>
-			<div class="col-md-10">
-				<input type="text" class="form-control" data-ng-model="article.title" id="title" placeholder="Title" required>
+<header id="submit" data-ng-controller="MatchesController" >
+	<h1>Edit</h1>
+	<p>Share your ideas with the world.</p>
+</header>
+<section class="submit edit" data-ng-controller="MatchesController" data-ng-init="findOne()">
+<form class="form-horizontal col-md-6" role="form" data-ng-submit="update()">
+	<h2 class="title">Details</h2>
+		<br>
+	<div class="row input">
+		<div class="col4">
+			<label for="title" class="control-label">Match</label>
+		</div>
+		<div class="col8">
+			<input type="text" class="form-control validate" data-ng-model="match.match" id="match" placeholder="Match">
+		</div>
+	</div>
+	<div class="row input">
+		<div class="col4">
+			<label for="title" class="control-label">Title<sup>*</sup></label>
+		</div>
+		<div class="col8">
+			<input type="text" class="form-control validate" data-ng-model="match.title" id="title" placeholder="Untitled" required>
+		</div>
+	</div>
+	<br>
+	<div class="row input">
+		<div class="col4">
+			<label for="content" class="control-label">
+				Description<br>
+				<small><a href="http://daringfireball.net/projects/markdown/syntax" tabindex="-1">markdown supported</a></small>
+			</label>
+		</div>
+		<div class="col8">
+			<textarea data-ng-model="match.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control validate"></textarea>
+		</div>
+	</div>
+	<br>
+	<div class="row input">
+		<div class="col4">
+			<label for="content" class="control-label">
+				Tags<br>
+			</label>
+		</div>
+		<div class="col8">
+			<input type="text" class="form-control validate" data-ng-model="match.tags" id="tags" placeholder="Space-seperated">
+		</div>
+	</div>
+	</div>
+		<br>
+		<br>
+		<h2 class="title">Comments</h2>
+		<br>
+		<div class="row input">
+			<div class="col4 larger" style="line-height: 1.5em;">
+				Commenting System<sup>*</sup>
+			</div>
+			<div class="col8 larger">
+				<input type="radio" data-ng-model="match.comments" value="disqus" id="disqus" checked="checked">
+				<label for="disqus">Disqus
+					<span>Public commenting system that will allow anyone to comment. Replies will appear in your e-mail.</span></label>
+				<input type="radio" data-ng-model="match.comments" value="da" id="da">
+				<label for="da">deviantART (Experimental)
+					<span>Closed commenting system that will allow members of deviantART to comment. A bot will start a comment thread on deviantART. Replies will appear in your Message Center.</span></label>
+				<input type="radio" data-ng-model="match.comments" value="native" id="native" disabled>
+				<label for="native" style="opacity: 0.5">Native (Coming Soon!)
+					<span>Closed commenting system that will allow Drawalongs members to comment. Replies will appear in you e-mail (assuming that I haven't yet hit the Sendgrid limit.)</span></label>
+				<input type="radio" data-ng-model="match.comments" value="disabled" id="disabled">
+				<label for="disabled">Disable Comments
+					<span>Turn off comments for everyone.</span></label>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="content" class="control-label">Content</label>
-			<div class="col-md-10">
-				<textarea data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+		<br>
+		<br>
+		<div class="row input">
+			<div class="col4 larger" style="line-height: 1.5em;">
+				Critique Settigs
+			</div>
+			<div class="col8 larger">
+				<input type="checkbox" data-ng-model="match.critique" id="critique">
+				<label for="critique" class="control-label">Request Critique
+				<span>Request valuable insight on how to improve your technique.</span></label>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<button type="submit" class="btn btn-default">Submit</button>
+		<br>
+		<br>
+		<div class="row input">
+			<div class="col4 larger" style="line-height: 1.5em;">
+				Ready?
+			</div>
+			<div class="col8 larger">
+				<label>
+					<span style="text-align: center;">By submitting, you agree that you are submitting original work that is relatively SFW.</span>
+				</label>
+				<button type="submit" class="btn-submit" onclick="$('html, body').animate({ scrollTop: 0 }, 600);">Update</button>
 			</div>
 		</div>
-	</form>
+</form>
 </section>

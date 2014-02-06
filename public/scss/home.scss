@@ -147,6 +147,10 @@ sup {
     text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 
+.button-start {
+    @include button-lift($green);
+}
+
 .button-edit {
     @include button-lift($blue);
 }
@@ -297,6 +301,9 @@ header {
     &#browse {
         background: $green;
     }
+    &#browse-matches {
+        background: $purple;
+    }
     @extend .dark-text-shadow;
     span.avatar {
         float: left;
@@ -313,6 +320,9 @@ header {
             max-height: 50px;
             width: auto;
         }
+    }
+    p > a {
+        display: inline!important;
     }
 }
 

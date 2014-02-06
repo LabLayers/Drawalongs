@@ -63,9 +63,10 @@ module.exports = function(passport) {
       },
       function(token, tokenSecret, profile, done){
         console.log(profile.username);
-        console.log(User); console.log(profile.id);
+        console.log(User); console.log(profile.username);
             User.findOne({
-                'username': profile.id
+                'username': profile.username,
+                'provider': profile.provider
             }, function(err, user) {
                 if (!user) {
                     user = new User({
@@ -73,7 +74,7 @@ module.exports = function(passport) {
                         username: profile.username,
                         avatar: profile.avatar,
                         provider: 'deviantart',
-                        deviantart: profile
+                        deviantart: profile._json
                     });
                     user.save(function(err) {
                         if (err) console.log(err);
@@ -164,6 +165,7 @@ module.exports = function(passport) {
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         username: profile.username,
+                        // avatar: profile._json.avatar_url,
                         provider: 'github',
                         github: profile._json
                     });

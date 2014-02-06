@@ -8,9 +8,9 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Article Schema
+ * Match Schema
  */
-var ArticleSchema = new Schema({
+var MatchSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -18,6 +18,11 @@ var ArticleSchema = new Schema({
     end: {
         type: Date,
         default: Date.now
+    },
+    status: {
+        type: String,
+        default: 'open',
+        trim: true
     },
     title: {
         type: String,
@@ -27,16 +32,26 @@ var ArticleSchema = new Schema({
     content: {
         type: String,
         default: '',
-        trim: true
+        trim: false
     },
     medium: {
         type: String,
         default: '',
-        trim: true
+        trim: false
     },
     rules: {
         type: String,
         default: '',
+        trim: false
+    },
+    tags: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    comments: {
+        type: String,
+        default: 'disqus',
         trim: true
     }
 });
@@ -44,17 +59,17 @@ var ArticleSchema = new Schema({
 /**
  * Validations
  */
-ArticleSchema.path('title').validate(function(title) {
+MatchSchema.path('title').validate(function(title) {
     return title.length;
 }, 'Title cannot be blank');
 
 /**
  * Statics
  */
-ArticleSchema.statics.load = function(id, cb) {
+MatchSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).populate('title', 'content').exec(cb);
 };
 
-mongoose.model('Match', ArticleSchema);
+mongoose.model('Match', MatchSchema);
