@@ -159,6 +159,10 @@ sup {
     @include button-lift($red);
 }
 
+.button-match {
+    @include button-lift($purple);
+}
+
 .button.border {
     @include button-border($blue);
     &:first-of-type {
