@@ -15,10 +15,10 @@ var hasAuthorization = function(req, res, next) {
 module.exports = function(app) {
 
     app.get('/matches', matches.all);
-    app.post('/match/create', authorization.requiresLogin, matches.create);
-    app.get('/match/:matchId', matches.show);
-    app.put('/match/:matchId', authorization.requiresLogin, hasAuthorization, matches.update);
-    app.del('/match/:matchId', authorization.requiresLogin, hasAuthorization, matches.destroy);
+    app.post('/matches', authorization.requiresLogin, matches.create);
+    app.get('/matches/:matchId', matches.show);
+    app.put('/matches/:matchId', authorization.requiresLogin, hasAuthorization, matches.update);
+    app.del('/matches/:matchId', authorization.requiresLogin, hasAuthorization, matches.destroy);
 
     // Finish with setting up the matchId param
     app.param('matchId', matches.match);

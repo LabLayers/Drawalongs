@@ -20,9 +20,8 @@ var MatchSchema = new Schema({
         default: Date.now
     },
     status: {
-        type: String,
-        default: 'open',
-        trim: true
+        type: Boolean,
+        default: true,
     },
     title: {
         type: String,
@@ -49,12 +48,27 @@ var MatchSchema = new Schema({
         default: '',
         trim: true
     },
+    featured: {
+        type: Boolean,
+        default: false,
+    },
+    desktop: {
+        type: Boolean,
+        default: false,
+    },
     comments: {
         type: String,
-        default: 'disqus',
+        default: 'disabled',
         trim: true
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
     }
 });
+
+// TEST
+// MatchSchema.findById(req.params.id);
 
 /**
  * Validations
@@ -69,7 +83,7 @@ MatchSchema.path('title').validate(function(title) {
 MatchSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('title', 'content').exec(cb);
+    }).populate('user', 'name username').exec(cb);
 };
 
 mongoose.model('Match', MatchSchema);

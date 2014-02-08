@@ -19,13 +19,16 @@ angular.module('mean').config(['$routeProvider',
         when('/matches', {
             templateUrl: 'views/matches/list.html'
         }).
+        when('/start', {
+            templateUrl: 'views/matches/create.html'
+        }).
         when('/matches/create', {
             templateUrl: 'views/matches/create.html'
         }).
-        when('/matches/:articleId/edit', {
+        when('/match/:matchId/edit', {
             templateUrl: 'views/matches/edit.html'
         }).
-        when('/matches/:articleId', {
+        when('/match/:matchId', {
             templateUrl: 'views/matches/view.html'
         }).
         when('/about', {

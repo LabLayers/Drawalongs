@@ -17,11 +17,13 @@ angular.module('mean.matches').controller('MatchesController', ['$scope', '$rout
             medium: this.medium,
             rules: this.rules,
             tags: this.tags,
+            featured: this.featured,
+            desktop: this.desktop,
             comments: this.comments
         });
         
         match.$save(function(response) {
-            $location.path('matches/' + response._id);
+            $location.path('match/' + response._id);
         });
 
         this.created = '';
@@ -32,6 +34,8 @@ angular.module('mean.matches').controller('MatchesController', ['$scope', '$rout
         this.medium = '';
         this.rules = '';
         this.tags = '';
+        this.featured = '';
+        this.desktop = '';
         this.comments = '';
 
     };
@@ -60,7 +64,7 @@ angular.module('mean.matches').controller('MatchesController', ['$scope', '$rout
         match.updated.push(new Date().getTime());
 
         match.$update(function() {
-            $location.path('matches/' + match._id);
+            $location.path('match/' + match._id);
         });
     };
 

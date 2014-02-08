@@ -52,6 +52,10 @@ var ArticleSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    featured: {
+        type: Boolean,
+        default: false,
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'

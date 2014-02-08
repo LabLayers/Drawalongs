@@ -1,6 +1,6 @@
 <header id="match-create">
 	<h1>Start a Match</h1>
-	<p>Nice!</p>
+	<p>Draw along together!</p>
 </header>
 <section class="edit edit-new" data-ng-controller="MatchesController">
 <form role="form" data-ng-submit="create()">
@@ -23,46 +23,44 @@
 			</label>
 		</div>
 		<div class="col8">
-			<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="content" class="form-control validate"></textarea>
+			<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Include information, rules, links, etc" class="form-control validate"></textarea>
 		</div>
 	</div>
-	<br>
 	<div class="row input">
 		<div class="col4">
 			<label for="medium" class="control-label">
 				Mediums<br>
-				<small><a href="http://daringfireball.net/projects/markdown/syntax" tabindex="-1">markdown supported</a></small>
 			</label>
 		</div>
 		<div class="col8">
-			<input type="text" class="form-control validate" data-ng-model="medium" id="medium" placeholder="Traditional, Digital, Photography, Etc" required>
-
+			<input type="text" class="form-control validate" data-ng-model="medium" id="medium" placeholder="Any, Traditional, Digital, Photography, etc">
 		</div>
 	</div>
 	<br>
-	<div class="row input">
+	<!-- <div class="row input">
 		<div class="col4">
 			<label for="rules" class="control-label">
 				Rules
+				<small><a href="http://daringfireball.net/projects/markdown/syntax" tabindex="-1">markdown supported</a></small>
 			</label>
 		</div>
 		<div class="col8">
 			<textarea data-ng-model="rules" id="rules" cols="30" rows="10" placeholder="rules" class="form-control validate"></textarea>
 		</div>
 	</div>
-	<br>
+	<br> -->
 	<div class="row input">
 		<div class="col4">
-			<label for="tags" class="control-label">Tags<sup>*</sup></label>
+			<label for="tags" class="control-label">Tags</label>
 		</div>
 		<div class="col8">
-			<input type="text" class="form-control validate" data-ng-model="tags" id="tags" placeholder="Untitled" required>
+			<input type="text" class="form-control validate" data-ng-model="tags" id="tags" placeholder="Space-seperated">
 		</div>
 	</div>
 	<br>
 	<h2 class="title">Submissions</h2>
 	<br>
-	<div class="row input">
+	<!-- <div class="row input">
 		<div class="col4">
 			<label for="end" class="control-label">Duration</label>
 		</div>
@@ -70,28 +68,38 @@
 			<input type="text" class="form-control validate" data-ng-model="end" id="end" placeholder="Untitled" required>
 		</div>
 	</div>
-	<strong class="or">OR</strong>
 	<div class="row input">
 		<div class="col4">
-			<label for="end" class="control-label">Close Submissions (EST)</label>
+			<strong class="or">OR</strong>
+
 		</div>
 		<div class="col8">
-			<input type="text" class="form-control validate" data-ng-model="end" id="end" placeholder="Untitled" required>
+			
+		</div>
+	</div> -->
+	<div class="row input">
+		<div class="col4">
+			<label for="end" class="control-label">Close Entries</label>
+		</div>
+		<div class="col8">
+			<input type="text" class="form-control validate" data-ng-model="end" id="end" placeholder="Datetime">
+			<label for="end"><span style="padding-left: 0px"><br>You can also choose to manually close entries later on.<br>
+				It is currently <span id="datetime"></span></span></label>
 		</div>
 	</div>
-	<br>
+	<!-- <br>
 	<div class="row input">
 		<div class="col4 larger" style="line-height: 1.5em;">
 			Closing
 		</div>
 		<div class="col8 larger">
-			<input type="checkbox" data-ng-model="critique" id="critique">
-			<label for="critique" class="control-label">Close Submissions After Deadline
-			<span>Submissions will close after the deadline.</span></label>
+			<input type="checkbox" data-ng-model="status" id="status">
+			<label for="status" class="control-label">Close Submissions After Deadline
+			<span>Submissions will close 10 minutes after the deadline.</span></label>
 		</div>
-	</div>
+	</div> -->
 	<br>
-	<h2 class="title">Misc</h2>
+	<!-- <h2 class="title">Misc</h2>
 	<br>
 			<div class="row input">
 				<div class="col4 larger" style="line-height: 1.5em;">
@@ -112,27 +120,27 @@
 						<span>Turn off comments for everyone.</span></label>
 				</div>
 			</div>
-			<br>
+			<br> -->
 			<br>
 			<div class="row input">
 				<div class="col4 larger" style="line-height: 1.5em;">
 					Desktop Notifications
 				</div>
 				<div class="col8 larger">
-					<input type="checkbox" data-ng-model="critique" id="critique">
-					<label for="critique" class="control-label">Enable
-					<span>Desktop notifications will warn visitors visiting your page during the halfway mark and 5 minutes before it's over.</span></label>
+					<input type="checkbox" data-ng-model="critique" id="desktop">
+					<label for="desktop" class="control-label">Enable
+					<span>Desktop notifications will warn visitors visiting your page during the halfway mark and 5 minutes before your match is over if a deadline is set.</span></label>
 				</div>
 			</div>
 			<br>
 			<br>
 			<div class="row input">
-				<div class="col4 larger" style="line-height: 1.5em;">
+				<div class="col4 larger" style="line-height: 5em;">
 					Ready?
 				</div>
 				<div class="col8 larger">
 					<label>
-						<span style="text-align: center;">Submissions will open as soon as you click the buttons below.</span>
+						<span style="padding-left: 0px">Submissions will open as soon as you click the button below.</span>
 					</label>
 					<button type="submit" class="btn-submit" onclick="$('html, body').animate({ scrollTop: 0 }, 600);">Start Match</button>
 				</div>

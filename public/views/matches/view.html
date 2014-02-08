@@ -1,6 +1,13 @@
-<section class="view" data-ng-controller="MatchesController" data-ng-init="findOne()">
+<header id="match-view" data-ng-controller="MatchesController" data-ng-init="findOne()">
+    <h1>{{match.title}}</h1>
+    <p>Draw along together!</p>
+</header>
+<section class="match-view" data-ng-controller="MatchesController" data-ng-init="findOne()">
     <div class="bubble" id="bubble"><a href="{{match.url}}">{{match.url}}</a></div>
-    <h2 class="title">{{match.title}} <small data-ng-show="match.tags" class="right"><span id="tag">Tags: {{match.tags}}</span></small></h2>
+    <h2 class="title">Submissions <small data-ng-show="match.tags" class="right"><span id="tag">Tags: {{match.tags}}</span></small></h2>
+    <span><i class="icon-emo-laugh"></i>&nbsp; by <a href="/#!/browse/?search={{match.user.name}}">{{match.user.name}}</a></span>
+    <br>
+    <span><i class="icon-muffin"></i> on {{match.created | date:'medium'}}</span>
     <div data-ng-show="global.user._id == match.user._id" class="right">
         <a class="button-edit" href="/#!/art/{{match._id}}/edit">
             <i class="icon-edit"></i> Edit Entry
@@ -9,9 +16,6 @@
             <i class="icon-close"></i> Delete
         </a>
     </div>
-    <span><i class="icon-emo-laugh"></i>&nbsp; by <a href="/#!/browse/?search={{match.user.name}}">{{match.user.name}}</a></span>
-    <br>
-    <span><i class="icon-muffin"></i> on {{match.created | date:'medium'}}</span>
     <modal data-ng-show="global.user._id == match.user._id" id="canigetridofthis" style="display: none;" class="hidden">
         <window>
             <h1>Delete Confirmation <a onclick="blast('canigetridofthis')" class="right"><i class="icon-close"></i></a></h1>

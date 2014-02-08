@@ -1,0 +1,1 @@
+"use strict";angular.module("mean.matches").factory("Matches",["$resource",function(e){return e("matches/:matchId",{matchId:"@_id"},{update:{method:"PUT"}})}]);

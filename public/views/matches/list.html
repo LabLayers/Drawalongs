@@ -8,11 +8,9 @@
     <br><br>
 	<ul class="matches thumbs row">
 		<li data-ng-repeat="match in matches | filter:query" class="col4">
-			<a data-ng-href="#!/art/{{match._id}}" class="box" style="display:block">
-                <span class="thumb" id="thumb">
-                    {{match.url}}
-                </span>
-			<h5 class="title">{{match.title}}</h5><span><i class="icon-emo-laugh"></i> by {{match.user.name}}</span><br>
+			<a data-ng-href="#!/match/{{match._id}}" class="box" style="display:block">
+
+			<h5 class="title">{{match.title}}</h5><br>
             <span><i class="icon-mouse"></i>&nbsp; for {{match.match}}</span>
 			<div></div></a>
 		</li>
